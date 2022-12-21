@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Metropolis';
+    font-weight: 600;
+    src: url('font/Metropolis-SemiBold.eot');
+    src: url('font/Metropolis-SemiBold.eot#iefix') format('embedded-opentype'),
+    url('font/Metropolis-SemiBold.woff2') format('woff2'),
+    url('font/Metropolis-SemiBold.woff') format('woff');    
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    font-weight: 400;
+    src: url('font/Metropolis-Thin.eot');
+    src: url('font/Metropolis-Thin.eot#iefix') format('embedded-opentype'),
+    url('font/Metropolis-Thin.woff2') format('woff2'),
+    url('font/Metropolis-Thin.woff') format('woff');    
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    font-style: italic;
+    font-weight: 600;
+    src: url('font/Metropolis-SemiBoldItalic.eot');
+    src: url('font/Metropolis-SemiBoldItalic.eot#iefix') format('embedded-opentype'),
+    url('font/Metropolis-SemiBoldItalic.woff2') format('woff2'),
+    url('font/Metropolis-SemiBoldItalic.woff') format('woff');    
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    font-style: italic;
+    font-weight: 400;
+    src: url('font/Metropolis-ThinItalic.eot');
+    src: url('font/Metropolis-ThinItalic.eot#iefix') format('embedded-opentype'),
+    url('font/Metropolis-ThinItalic.woff2') format('woff2'),
+    url('font/Metropolis-ThinItalic.woff') format('woff');    
+}

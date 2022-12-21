@@ -1,0 +1,2 @@
+# posts
+collection of thoughts
