@@ -13,7 +13,7 @@ with cope('index.html', 'r', 'utf8') as index_template:
 
 with cope('docs/index.html', 'w', 'utf8') as index:
     index_lines = ''
-    for md_file in sorted(glob('docs/markdown/*.md')):
+    for md_file in sorted(glob('markdown/*.md')):
         with cope(md_file, 'r', 'utf8') as md:
             markdown = Markdown(extensions=['meta', 'tables', 'smarty', 'fenced_code', CodeHiliteExtension(noclasses=True, pygments_style='github-dark'), 'toc', 'admonition'])
             text = markdown.convert(md.read().strip())
