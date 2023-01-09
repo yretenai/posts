@@ -40,6 +40,6 @@ These usually are relating to asset conversion and mod capabilities.
 - Wrench: Godot
 - _Stormbird: Horizon (Decima Engine)[^stormbird]_
 - _Arcstone: Core Keeper Save Editor_
-- _Skeeb: Tiny Tina's Wonderland Save Editor_
+- _Skeep: Tiny Tina's Wonderland Save Editor_
 
 [^stormbird]: Waiting on HFW PC Port (if ever)
