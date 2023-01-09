@@ -10,8 +10,8 @@
     <meta property="og:site_name" content="Naomi's Blog">
     <meta property="twitter:card" content="summary">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="font/metropolis.css">
-    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="{rel}font/metropolis.css">
+    <link rel="stylesheet" href="{rel}design.css">
     <title>Naomi's Blog - {title}</title>
     <meta property="og:title" content="Naomi's Blog">
     <meta property="og:description" content="{short}">
@@ -28,20 +28,20 @@
             <figure>
                 {short}
                 <span>
-                    written at
+                    last updated at
                     <time datetime="{isotime}">{time}</time>
                 </span>
             </figure>
         </header>
         <nav>
-            <a href="index.html">back to index</a> - <a href="https://github.com/yretenai/posts/blob/develop/markdown/{url}.md">view source</a><br>
+            <a href="{rel}index.html">back to index</a> - <a href="https://github.com/yretenai/posts/blob/develop/markdown/{url}.md">view source</a><br>
         </nav>
         <article>
             {body}
         </article>
         <footer>
-            created with <img src="emoji/heart.png" alt="❤️"> by <a href="https://github.com/yretenai">Naomi</a> <img src="emoji/egg.png" alt="moth egg"> <img src="emoji/trans_lily.png" alt="trans lilly"> <img src="emoji/lesbian_lily.png" alt="lesbian lily"><br>
-            <a href="https://github.com/yretenai/posts">source code</a> - <a href="emoji/NOTICE.txt">emoji credit notice</a><br>
+            created with <img src="{rel}emoji/heart.png" alt="❤️"> by <a href="https://github.com/yretenai">Naomi</a> <img src="{rel}emoji/egg.png" alt="moth egg"> <img src="{rel}emoji/trans_lily.png" alt="trans lilly"> <img src="{rel}emoji/lesbian_lily.png" alt="lesbian lily"><br>
+            <a href="https://github.com/yretenai/posts">source code</a> - <a href="{rel}emoji/NOTICE.txt">emoji credit notice</a><br>
         </footer>
     </main>
 </body>
