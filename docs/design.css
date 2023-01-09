@@ -53,7 +53,7 @@ h6 {
 	font-weight: 100;
 }
 
-header figure, header h1, .footnote-ref, .footnote, h1, h2, h3, h4, h5, h6 {
+header figure, header h1, .footnote-ref, .footnote li:target p, h1, h2, h3, h4, h5, h6 {
 	background: #fff;
 	background: -moz-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) #fff;
 	background: -webkit-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) #fff;
@@ -183,6 +183,12 @@ img {
 .footnote p {
 	margin: 0;
 	padding: 0;
+}
+
+.footnote li:target, .footnote li:target p {
+	font-size: 1.1em;
+	font-weight: 600;
+	font-style: normal;
 }
 
 @media (max-width:900pt) {
