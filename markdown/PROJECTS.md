@@ -7,7 +7,7 @@ private: true
 
 # Projects in no particular order
 
-Projects in italics are paused indefinitely, similarly projects in bold are currently being worked on.
+Projects in italics are paused indefinitely, those in bold are currently being worked on.
 
 ## Personal projects
 
