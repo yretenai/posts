@@ -132,7 +132,7 @@ The `final` flag is set if this is the last block in the stream, and the `type` 
 
 ### GZip
 
-GZip[^rfc1952] is a ZLib stream with a header and a footer.
+GZip[^rfc1952] is a ZLib stream with a well formed header.
 
 GZip will always start with a magic number (`1F 8B`) as well as a compression method (`8` for DEFLATE).
 
