@@ -1,7 +1,7 @@
 ---
 title: compression algorithms
 short: A deep dive into compression algorithms and how to notice them in hex
-date: 2023-01-25 12:34 PM
+date: 2023-01-25 2:42 PM
 ---
 
 # Compression Algorithms
@@ -25,7 +25,7 @@ All magic values are written as byte sequences (i.e. big endian)
 ## The Basics
 
 The first thing you need to know is that compression algorithms are not magic. 
-In many cases compression algorithms have a sanity check (a "magic" number) that is used to verify set up the compressor. 
+In many cases compression algorithms have a sanity check (a "magic" number) that is used to verify and set up the decompressor. 
 In other cases parts of the data can be seen in the compressed data.
 
 ## The Dreaded Lempel-Ziv Algorithm (Lz*)
@@ -42,7 +42,7 @@ To figure out if a file might be compressed with an Lz algorithm, you should loo
 This is because LZ algorithms use a dictionary to store data that has been seen before, 
 and the first byte (the "block") is used to determine the length of the data to be copied from the dictionary.
 
-I strongly suggest using comscan[^comscan] with quickbms[^bms] to test what compression algorithm is used by a file.
+I strongly suggest using comscan[^comscan] with quickbms[^bms] to test what compression algorithm is used by a file when you encounter this and LZ4 (see below) does not work.
 
 [^comscan]: [https://zenhax.com/viewtopic.php?t=23](https://zenhax.com/viewtopic.php?t=23)
 
@@ -82,7 +82,7 @@ I have not yet seen a raw LZMA stream in the wild beyond 7z files, likely due to
 
 ## DEFLATE, Zlib, and GZip
 
-DEFLATE[^zlib] is a compression algorithm that is used in many files, and you will most likely see it a lot.
+DEFLATE[^zlib] is a compression algorithm that is used in many files, and you will most likely have already seen it if you do any amount of file analysis.
 
 ZLib uses a DEFLATE block with a header, and ADLER32 as it's checksum algorithm.
 
@@ -107,7 +107,7 @@ struct zlib_header {
 The `compression_info` is the log base 2 of the window size (the size of the dictionary used by the compressor), and the `checksum` a the checksum of the header. 
 The `dict` flag is set if a dictionary is used, and the `level` is the compression level used by the compressor.
 
-Knowing this zlib header will always start with `78` if the compression method is DEFLATE.
+Knowing this, zlib header will always start with `78` if the compression method is DEFLATE.
 
 [^rfc1950]: [https://tools.ietf.org/html/rfc1950](https://tools.ietf.org/html/rfc1950)
 
@@ -192,7 +192,7 @@ struct zdict_header {
 
 ## Oodle
 
-Oodle[^oodle] is a proprietary standard compression type used in many games, and has a hardware encoder in the PS5.
+Oodle[^oodle] is a proprietary compression format used in many games, and has a hardware encoder in the PS5.
 
 Oodle will always start with `#C` if it is made with version 4 or higher. Version 4 Oodle files have the following format:
 
