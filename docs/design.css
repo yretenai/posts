@@ -1,6 +1,15 @@
 @import url('https://cdn.jsdelivr.net/gh/vmware/clarity-city@f2ecc978bb5048cf8c3508ea61ec66ca2014ee19/css/bundles/default.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-*, body, html {
+:root {
+	--bg: #111;
+	--fg: #eee;
+	--border: #444;
+	--border-fix: #4442;
+	--footer: #999;
+}
+
+body, html {
 	margin: 0;
 	padding: 0;
 	font-family: "Clarity City", "Segoe UI", Tahoma, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -8,11 +17,11 @@
 }
 
 a, body {
-	color: #fff;
+	color: var(--fg);
 }
 
 body {
-	background-color: #222;
+	background-color: var(--bg);
 }
 
 strong, b, h1, h2, h3, h4, h5, h6, header {
@@ -53,18 +62,29 @@ h6 {
 	font-weight: 100;
 }
 
-header figure, header h1, .footnote-ref, .footnote li:target p, h1, h2, h3, h4, h5, h6 {
-	background: #fff;
-	background: -moz-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) #fff;
-	background: -webkit-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) #fff;
-	background: linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) #fff;
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	-moz-text-fill-color: transparent;
-	text-fill-color: transparent;
-	clear: both;
+@media not print {
+	header figure, header h1, .footnote-ref, .footnote li:target p, h1, h2, h3, h4, h5, h6 {
+		background: -moz-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) var(--fg);
+		background: -webkit-linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) var(--fg);
+		background: linear-gradient(60deg, rgba(172, 113, 255, .33)0, rgba(0, 179, 245, .33) 100%) var(--fg);
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-moz-text-fill-color: transparent;
+		text-fill-color: transparent;
+		clear: both;
+	}
+}
+
+@media print {
+	nav {
+		display: none;
+	}
+
+	footer .emoji, footer span {
+		display: none;
+	}
 }
 
 header figure {
@@ -99,12 +119,12 @@ nav {
 main>:not(footer) {
 	margin-bottom: 6pt;
 	padding-bottom: 6pt;
-	border-bottom: 1pt dashed #444;
+	border-bottom: 1pt dashed var(--border);
 }
 
 hr {
 	margin: 6pt 0;
-	border-bottom: 1pt dashed #4442;
+	border-bottom: 1pt dashed var(--border-fix);
 	color: transparent;
 }
 
@@ -117,7 +137,7 @@ footer {
 }
 
 footer, footer a {
-	color: #999;
+	color: --footer;
 }
 
 footer img {
@@ -145,11 +165,21 @@ img {
 .codehilite, code, pre {
 	padding: .5em;
 	border-radius: .2em;
+	font-family: 'Fira Code', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+}
+
+code {
+	font-style: italic;
+	font-weight: 600;
+	padding: .2em;
 }
 
 .codehilite code, .codehilite pre {
 	margin: 0;
+	padding: 0;
 	border-radius: 0;
+	font-style: normal;
+	font-weight: 400;
 }
 
 .footnote-ref {
@@ -191,7 +221,7 @@ img {
 	font-style: normal;
 }
 
-@media (max-width:900pt) {
+@media (max-width:900pt), print {
 	main {
 		font-size: 12pt;
 	}
@@ -200,7 +230,7 @@ img {
 		margin-left: 0;
 	}
 
-	p {
+	p, .codehilite, code, pre {
 		margin-left: 26pt;
 	}
 
@@ -218,5 +248,15 @@ img {
 
 	.footnote-ref {
 		font-size: 1em;
+	}
+}
+
+@media (prefers-color-scheme: light), print {
+	:root {
+		--fg: #000;
+		--bg: #fff;
+		--border: #ccc;
+		--border-fix: #ddd;
+		--footer: #999;
 	}
 }

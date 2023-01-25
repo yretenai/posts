@@ -14,6 +14,7 @@ Projects in italics are paused indefinitely, those in bold are currently being w
 - **pridegen: Untitled Pride Emoji Generator Project**
 - **lgbt-colors: a collection of LGBT-related colors, developed in tandem with pridegen** 
 - NepFE: A frontend for Misskey/Akkoma/Mastodon
+- Astronomicon: A C# (or Rust, haven't decided yet) library for astronomical calculations
 - _TLSF Memory Arena (DragonLib)[^tlsf]_
 - _Fibonacci Heap (DragonLib)[^fib]_
 - _Kobold: General Purpose Game Engine[^kobold]_
