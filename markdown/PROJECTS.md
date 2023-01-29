@@ -30,6 +30,7 @@ Projects in italics are paused indefinitely, those in bold are currently being w
 These usually are relating to asset conversion and mod capabilities.
 
 - **Fang: FFXIII (Crystal Tools)**
+- **Witch: FFXV/Forspoken (Luminous Engine)**
 - **Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)**
 - Alfiq: ESO (Modified HERO Engine)
 - Dragapult: PkMn SwSh/SV (GFLib3)
