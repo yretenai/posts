@@ -221,6 +221,10 @@ code {
 	font-style: normal;
 }
 
+header figure br:last-child {
+	display: none;
+}
+
 @media (max-width:900pt), print {
 	main {
 		font-size: 12pt;
