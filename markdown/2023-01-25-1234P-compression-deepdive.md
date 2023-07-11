@@ -2,9 +2,12 @@
 title: compression algorithms
 short: A deep dive into compression algorithms and how to notice them in hex
 date: 2023-01-25 2:42 PM
+updated: 2023-07-11 7:36 PM
 ---
 
 # Compression Algorithms
+
+*Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.*
 
 One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file. 
 This is an interesting question, and I hope that this post will help you understand how I notice compression algorithms in hex.
@@ -18,7 +21,7 @@ it will help you understand _why_ they are there and how to notice them when the
 
 All magic values are written as byte sequences (i.e. big endian)
 
-[^eyes]: [https://zenhax.com/viewtopic.php?t=27](https://zenhax.com/viewtopic.php?t=27)
+[^eyes]: [https://zenhax.com/viewtopic.php?t=27](https://web.archive.org/web/20230109220055/https://zenhax.com/viewtopic.php?t=27) (archived)
 
 [TOC]
 
@@ -44,7 +47,7 @@ and the first byte (the "block") is used to determine the length of the data to 
 
 I strongly suggest using comscan[^comscan] with quickbms[^bms] to test what compression algorithm is used by a file when you encounter this and LZ4 (see below) does not work.
 
-[^comscan]: [https://zenhax.com/viewtopic.php?t=23](https://zenhax.com/viewtopic.php?t=23)
+[^comscan]: [https://zenhax.com/viewtopic.php?t=23](https://web.archive.org/web/20221125023314/https://zenhax.com/viewtopic.php?t=23) (archived)
 
 [^bms]: [https://aluigi.altervista.org/quickbms.htm](https://aluigi.altervista.org/quickbms.htm)
 
@@ -77,7 +80,7 @@ LZMA2 likewise has no header, though it will often start with `18` followed by c
 I have not yet seen a raw LZMA stream in the wild beyond 7z files, likely due to it's large overhead.
 
 [^7z]: [https://7-zip.org/sdk.html](https://7-zip.org/sdk.html)
-[^lzma]: [https://github.com/jljusten/LZMA-SDK/blob/master/DOC/lzma-specification.txt](https://github.com/jljusten/LZMA-SDK/blob/master/DOC/lzma-specification.txt)
+[^lzma]: [https://github.com/jljusten/LZMA-SDK/blob/20d713a28e5aee284f5671c7cf41ffa52db0215e/DOC/lzma-specification.txt](https://github.com/jljusten/LZMA-SDK/blob/20d713a28e5aee284f5671c7cf41ffa52db0215e/DOC/lzma-specification.txt)
 
 
 ## DEFLATE, Zlib, and GZip
@@ -172,7 +175,7 @@ struct zstd_header {
 ```
 
 [^zstd]: [https://github.com/facebook/zstd](https://github.com/facebook/zstd)
-[^zstddoc]: [https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md](https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md)
+[^zstddoc]: [https://github.com/facebook/zstd/blob/3732a08f5b82ed87a744e65daa2f11f77dabe954/doc/zstd_compression_format.md](https://github.com/facebook/zstd/blob/3732a08f5b82ed87a744e65daa2f11f77dabe954/doc/zstd_compression_format.md)
 
 ### ZDictionary
 
@@ -188,7 +191,7 @@ struct zdict_header {
 }
 ```
 
-[^zdict]: [https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md#dictionary-format](https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md#dictionary-format)
+[^zdict]: [https://github.com/facebook/zstd/blob/3732a08f5b82ed87a744e65daa2f11f77dabe954/doc/zstd_compression_format.md#dictionary-format](https://github.com/facebook/zstd/blob/3732a08f5b82ed87a744e65daa2f11f77dabe954/doc/zstd_compression_format.md#dictionary-format)
 
 ## Oodle
 
