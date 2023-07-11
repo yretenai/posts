@@ -28,7 +28,7 @@ strong, b, h1, h2, h3, h4, h5, h6, header {
 }
 
 main {
-	font-size: 18pt;
+	font-size: 1em;
 	margin: 0 auto;
 	max-width: 800pt;
 }
@@ -232,7 +232,7 @@ header figure br:last-child {
 
 @media (max-width:900pt), print {
 	main {
-		font-size: 12pt;
+		font-size: 0.8em;
 	}
 
 	article h1, article h2, article h3, article h4, article h5, article h6 {
