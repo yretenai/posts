@@ -2,7 +2,7 @@
 title: projects
 short: surely this will help me actually finish them
 date: 2023-01-09 5:27 AM
-last-updated: 2023-07-17 11:37 AM
+updated: 2023-07-17 11:37 AM
 private: true
 ---
 
