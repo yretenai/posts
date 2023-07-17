@@ -1,6 +1,6 @@
 ---
 title: compression algorithms
-short: A deep dive into compression algorithms and how to notice them in hex
+short: a deep dive into compression algorithms and how to notice them in hex
 date: 2023-01-25 2:42 PM
 updated: 2023-07-11 7:36 PM
 ---
