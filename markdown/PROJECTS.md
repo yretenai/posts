@@ -2,23 +2,30 @@
 title: projects
 short: surely this will help me actually finish them
 date: 2023-01-09 5:27 AM
+last-updated: 2023-07-17 11:37 AM
 private: true
 ---
 
 # Projects in no particular order
 
-Projects in italics are paused indefinitely, those in bold are currently being worked on.
+## Active Projects
 
-## Personal projects
+- cribbit: C/Rust/C++ TACT library
+- EVE-Blender: EVE-Blender interopability plugins for artists
+- EVE-Foxcat: EVE Multiboxing Switcher
+- Jackalope: imgui-based audio player.
+- lgbt-colors: a collection of LGBT-related colors
+- shard: megabundle utility for archiving incremental files 
+- Snep: Blender launcher/updater
+- WEMSharp: Wwise WEM and BNK parser in dotnet
 
-- **pridegen: Untitled Pride Emoji Generator Project**
-- **lgbt-colors: a collection of LGBT-related colors, developed in tandem with pridegen** 
-- NepFE: A frontend for Misskey/Akkoma/Mastodon
-- Astronomicon: A C# (or Rust, haven't decided yet) library for astronomical calculations
-- _TLSF Memory Arena (DragonLib)[^tlsf]_
-- _Fibonacci Heap (DragonLib)[^fib]_
-- _Kobold: General Purpose Game Engine[^kobold]_
-- _glTF-Legiayayana-EXT: Personal glTF Extensions[^gltf]_
+## Paused Projects
+
+- Fibonacci Heap (DragonLib, astrastl)[^fib]
+- glTF-Legiayayana-EXT: Personal glTF Extensions[^gltf]
+- Kobold: General Purpose Game Engine[^kobold]
+- pridegen: Untitled Pride Emoji Generator Project
+- TLSF Memory Arena (DragonLib, astrastl)[^tlsf]
 
 [^tlsf]: Implementing this in C# is hard
 [^fib]: Implementing this at all is hard
@@ -29,19 +36,25 @@ Projects in italics are paused indefinitely, those in bold are currently being w
 
 These usually are relating to asset conversion and mod capabilities.
 
-- **Fang: FFXIII (Crystal Tools)**
-- **Witch: FFXV/Forspoken (Luminous Engine)**
-- **Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)**
 - Alfiq: ESO (Modified HERO Engine)
+- Ardenweald: WoW
 - Dragapult: PkMn SwSh/SV (GFLib3)
+- Fang: FFXIII (Crystal Tools)
+- Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)
 - Hiss: Control (Northlight 64-bit)
+- Mesonexus: Game Maker
 - Rikku: FFX/X-2 Remaster (PhyreEngine?)
-- _Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)_
 - Rocket: Gaurdians (Dawn Engine)
+- Stormbird: Horizon (Decima Engine)[^stormbird]
 - Tosca: Crucible (Lumberyard)
+- Witch: FFXV/Forspoken (Luminous Engine)
 - Wrench: Godot
-- _Stormbird: Horizon (Decima Engine)[^stormbird]_
-- _Arcstone: Core Keeper Save Editor_
-- _Skeep: Tiny Tina's Wonderland Save Editor_
+- Yordle: League of Legends
+- Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)
 
 [^stormbird]: Waiting on HFW PC Port (if ever)
+
+### Save editors
+
+- Arcstone: Core Keeper Save Editor
+- Skeep: Tiny Tina's Wonderland Save Editor
