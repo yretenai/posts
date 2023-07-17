@@ -34,7 +34,6 @@ private: true
 
 These usually are relating to asset conversion and mod capabilities.
 
-- Alfiq: ESO (Modified HERO Engine)
 - Ardenweald: WoW
 - Dragapult: PkMn SwSh/SV (GFLib3)
 - EVE-Blender: EVE-Blender interopability plugins for artists
