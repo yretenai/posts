@@ -11,8 +11,6 @@ private: true
 ## Active Projects
 
 - cribbit: C/Rust/C++ TACT library
-- EVE-Blender: EVE-Blender interopability plugins for artists
-- EVE-Foxcat: EVE Multiboxing Switcher
 - Jackalope: imgui-based audio player.
 - lgbt-colors: a collection of LGBT-related colors
 - shard: megabundle utility for archiving incremental files 
@@ -39,6 +37,8 @@ These usually are relating to asset conversion and mod capabilities.
 - Alfiq: ESO (Modified HERO Engine)
 - Ardenweald: WoW
 - Dragapult: PkMn SwSh/SV (GFLib3)
+- EVE-Blender: EVE-Blender interopability plugins for artists
+- EVE-Foxcat: EVE Multiboxing Switcher
 - Fang: FFXIII (Crystal Tools)
 - Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)
 - Hiss: Control (Northlight 64-bit)
