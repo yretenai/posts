@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin">
+    <meta name="darkreader-lock" content="">
+    <meta name="theme-color" content="rgb(31, 31, 31)">
+    <meta name="theme-color-orig" content="#988FFF">
+    <meta property="og:site_name" content="ada's blog">
+    <meta property="twitter:card" content="summary">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="code.dark.css">
+    <link rel="stylesheet" href="code.css">
+    <link rel="stylesheet" href="design.css">
+    <title>ada's blog - json-ld is misused</title>
+    <meta property="og:title" content="json-ld is misused">
+    <meta property="og:description" content="it's not just fancy json.">
+    <meta property="og:url" content="https://chronovore.dev/posts/2023-07-29-0925A-activity-jsonld-rot.html">
+    <meta property="og:type" content="article">
+    <meta property="og:author" content="Ada">
+    <meta property="article:published_time" content="2023-07-29T09:25:00">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>ada's blog</h1>
+            <figure>
+                it's not just fancy json.
+                <br/>
+                <span>
+                    last updated at
+                    <time datetime="2023-07-29T09:25:00">2023-07-29 9:25 AM</time>
+                </span>
+                <span>
+                    published at
+                    <time datetime="2023-07-29T09:25:00">2023-07-29 9:25 AM</time>
+                </span>
+                <br/>
+            </figure>
+        </header>
+        <nav>
+            <a href="index.html">back to index</a> - <a href="https://github.com/yretenai/posts/blob/develop/markdown/2023-07-29-0925A-activity-jsonld-rot.md">view source</a><br>
+        </nav>
+        <article>
+            <h1 id="as-always-context-is-important">as always, context is important</h1>
+<p>ActivityStreams is a subset of JSON-LD, specifically the compacted form.</p>
+<blockquote>
+<p>This specification describes a JSON-based RFC7159 serialization syntax for the Activity Vocabulary that conforms to a subset of JSON-LD syntax constraints but does not require JSON-LD processing. While other serialization forms are possible, such alternatives are not discussed by this document.[^assyntax]: <a href="https://www.w3.org/TR/activitystreams-core/#syntaxconventions">https://www.w3.org/TR/activitystreams-core/#syntaxconventions</a></p>
+<p>The serialized JSON form of an Activity Streams 2.0 document MUST be consistent with what would be produced by the standard JSON-LD 1.0 Processing Algorithms and JSON-LD-API Compaction Algorithm using, at least, the normative JSON-LD @context definition provided here. [^asjsonld]: <a href="https://www.w3.org/TR/activitystreams-core/#jsonld0">https://www.w3.org/TR/activitystreams-core/#jsonld</a></p>
+</blockquote>
+<p>This essentially looks like fancy JSON with a schema attached to it.
+But it&rsquo;s not&hellip; That <code>@context</code> is important, and <strong>not</strong> set in stone.</p>
+<blockquote>
+<p>For extensions, JSON-LD is used as the primary mechanism for defining and disambiguating extensions. Implementations that wish to fully support extensions SHOULD use JSON-LD mechanisms. </p>
+<p>It is important to note that the JSON-LD Processing Algorithms, as currently defined, will silently ignore any property not defined in a JSON-LD @context. Implementations that publish Activity Streams 2.0 documents containing extension properties SHOULD provide a @context definition for all extensions. <a href="https://www.w3.org/TR/activitystreams-core/#extensibility">^asextensibility</a></p>
+</blockquote>
+<p>While Activity vocabulary is set in stone and should not and will not ever change,
+Extensions are not.</p>
+<p>When sending an ActivityStreams message, you cannot rename, override or replace ActivityStreams predicates but this does not apply to extensions.</p>
+<p>Given the following example:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;https://www.w3.org/ns/activitystreams&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.org/foo&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/example/note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a simple note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This is still a valid ActivityStreams message, but <strong>you should avoid accessing <code>"foo"</code> directly.</strong></p>
+<p>Why? Overlap and disambiguation.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;https://www.w3.org/ns/activitystreams&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.org/foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;other_foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://another.example.org/foo&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/example/note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a simple note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;other_foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Both <code>"foo"</code> and <code>"other_foo"</code> are <code>foo</code> terms. 
+They can swap, or even be a different term entierly. It&rsquo;s implementation-defined.
+This would still be a valid JSON-LD object and a valid Activity Object.</p>
+<p>Then, there&rsquo;s also the use of IRIs.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w">   </span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;https://www.w3.org/ns/activitystreams&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;ex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.org/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ex:foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ex2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://another.example.org/&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/example/note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a simple note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ex2:foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This one is more set-in-stone, however you should still verify that the namespace is actually what you expect. 
+However now everyone is forced to use &ldquo;ex2:foo&rdquo; if we were to include this extension (much like we&rsquo;re currently forced to use the short IRI <code>"vcard:location"</code>)</p>
+<p>JSON-LD algorithms would transform all three objects, essentially into:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/example/note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;https://www.w3.org/ns/activitystreams/type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;https://www.w3.org/ns/activitystreams/content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a simple note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;http://example.org/foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;http://another.example.org/foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>and</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/example/note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;as:type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;as:content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a simple note&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ex:foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ex2:foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You would then just access it via either it&rsquo;s shortened IRI, or it&rsquo;s full URI&ndash; disambiguating the result.
+This is very important because as ActivityPub is getting more popular, and more third-party extensions are introduced by Litepub, Misskey, and others.</p>
+<p>I found this out when I was looking into adding <code>schema:license</code> and <code>schema:description</code> into ActivityStreams&rsquo; <code>Image</code> type. 
+To provide a means to define a copyright SPDX and/or author citation, while also allowing for descriptive text[^ap-descriptive-text]: ActivityPub nor ActivityStreams defines how descriptive text is supposed to be federated. Right now most implementations store in the <code>"name"</code> field of the Image which I find a bit silly especially since new implementations might be unaware of this quirk and potentially use a giant blob of text as the filename if they make the same assumption I did.
+As it stands right now, i&rsquo;m using <code>schema:license</code> and <code>schema:description</code> directly into the object;
+now knowing that every implementation will have to blindly check that short IRI.</p>
+<p>The only social-network-style ActivityPub implementation that I&rsquo;ve found that implements proper JSON-LD parsing is GoToSocial,
+which very effectively utilizes Go&rsquo;s struct tags to map JSON-LD URIs to struct fields.</p>
+<p>I do understand that processing JSON-LD at all is way more computationally heavy than JSON by itself, 
+but if you&rsquo;re going to introduce JSON-LD extension contexts <strong>please</strong> create a json-ld spec file.[^its-just-xml]: Compacted JSON-LD is essentially just JSON with XMLNS DTD features.</p>
+<p>You can federate anything over ActivityStreams, even new Activity types if you wanted&ndash; as long as you properly define them.
+Support for them in other platforms might not ever exist, though.</p>
+            <footer>
+                created with <img src="emoji/heart.png" alt="love"> by <a href="https://github.com/yretenai">Ada</a> <img src="emoji/trans_lily.png" class="emoji" alt="transgender lilly emoji, "> <img src="emoji/lesbian_lily.png" class="emoji" alt="lesbian lily emoji"><br>
+                <span><a href="https://github.com/yretenai/posts">source code</a> - <a href="emoji/NOTICE.txt">emoji credit notice</a> - <a href="LICENSE">licensed under 0BSD</a></span><br>
+            </footer>
+        </article>
+    </main>
+</body>
+
+</html>
