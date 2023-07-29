@@ -1,7 +1,7 @@
 ---
 title: json-ld is misused
 short: it's not just fancy json.
-date: 2023-07-29 9:25 AM
+date: 2023-07-28 9:25 AM
 ---
 
 # as always, context is important

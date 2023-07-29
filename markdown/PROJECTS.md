@@ -10,12 +10,13 @@ private: true
 
 ## Active Projects
 
-- cribbit: C/Rust/C++ TACT library
+- cribbit: C TACT library
 - Jackalope: imgui-based audio player.
 - lgbt-colors: a collection of LGBT-related colors
-- shard: megabundle utility for archiving incremental files 
 - Snep: Blender launcher/updater
-- WEMSharp: Wwise WEM and BNK parser in dotnet
+- Wytch: Activitypub platform[^wytch]
+
+[^wytch]: Design only. Pending on library, and my ability to comprehend activitypub systems which I'm doing by tinkering on my Misskey fork.
 
 ## Paused Projects
 
@@ -24,11 +25,15 @@ private: true
 - Kobold: General Purpose Game Engine[^kobold]
 - pridegen: Untitled Pride Emoji Generator Project
 - TLSF Memory Arena (DragonLib, astrastl)[^tlsf]
+- WEMSharp: Wwise WEM and BNK parser in dotnet[^wem]
+- shard: megabundle utility for archiving incremental files[^shard]
 
 [^tlsf]: Implementing this in C# is hard
 [^fib]: Implementing this at all is hard
 [^kobold]: General Puprose Game Engines are a multi-person, decade-long endeavour that I haven't even started yet
 [^gltf]: Delayed until I actually write something that can use it
+[^wem]: Lost interest.
+[^shard]: Feature complete, but needs testing and polishing.
 
 ## Game-related projects
 
@@ -49,9 +54,10 @@ These usually are relating to asset conversion and mod capabilities.
 - Witch: FFXV/Forspoken (Luminous Engine)
 - Wrench: Godot
 - Yordle: League of Legends
-- Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)
+- Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)[^ffxiv]
 
 [^stormbird]: Waiting on HFW PC Port (if ever)
+[^ffxiv]: Waiting on 7.0 as I suspect it's the same engine as FFXVI
 
 ### Save editors
 
