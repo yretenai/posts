@@ -1,3 +1,32 @@
-User-agent: *
-Disallow: /markdown
-Disallow: /private
+User-Agent: *
+Disallow: /markdown/
+Disallow: /private/
+
+User-Agent: Adsbot
+Disallow: /
+Allow: /ads.txt
+Allow: /app-ads.txt
+
+User-Agent: TurnitinBot
+Disallow: /
+
+User-Agent: NPBot
+Disallow: /
+
+User-Agent: SlySearch
+Disallow: /
+
+User-Agent: BLEXBot
+Disallow: /
+
+User-agent: CheckMarkNetwork/1.0 (+https://www.checkmarknetwork.com/spider.html)
+Disallow: /
+
+User-agent: BrandVerity/1.0
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
