@@ -2,13 +2,13 @@
 title: projects
 short: surely this will help me actually finish them
 date: 2023-01-09 5:27 AM
-updated: 2023-07-17 11:37 AM
+updated: 2023-08-13 17:20 AM
 private: true
 ---
 
-# Projects in no particular order
+# Projects in alphabetical order
 
-## Active Projects
+## Personal Projects
 
 - cribbit: C TACT library
 - Jackalope: imgui-based audio player.
@@ -18,7 +18,7 @@ private: true
 
 [^wytch]: Design only. Pending on library, and my ability to comprehend activitypub systems which I'm doing by tinkering on my Misskey fork.
 
-## Paused Projects
+### Stalled
 
 - Fibonacci Heap (DragonLib, astrastl)[^fib]
 - glTF-Legiayayana-EXT: Personal glTF Extensions[^gltf]
@@ -39,25 +39,29 @@ private: true
 
 These usually are relating to asset conversion and mod capabilities.
 
-- Ardenweald: WoW
-- Dragapult: PkMn SwSh/SV (GFLib3)
 - EVE-Blender: EVE-Blender interopability plugins for artists
 - EVE-Foxcat: EVE Multiboxing Switcher
+- Rivet: Ratchet & Clank: Rift Apart (Insomniac Engine)
+- Rocket: Gaurdians (Dawn Engine)
+- Tosca: Crucible (Lumberyard)
+- Witch: FFXV/Forspoken (Luminous Engine)
+
+### Stalled
+
+- Ardenweald: WoW
+- Dragapult: PkMn SwSh/SV (GFLib3)
 - Fang: FFXIII (Crystal Tools)
 - Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)
 - Hiss: Control (Northlight 64-bit)
 - Mesonexus: Game Maker
 - Rikku: FFX/X-2 Remaster (PhyreEngine?)
-- Rocket: Gaurdians (Dawn Engine)
 - Stormbird: Horizon (Decima Engine)[^stormbird]
-- Tosca: Crucible (Lumberyard)
-- Witch: FFXV/Forspoken (Luminous Engine)
 - Wrench: Godot
 - Yordle: League of Legends
 - Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)[^ffxiv]
 
 [^stormbird]: Waiting on HFW PC Port (if ever)
-[^ffxiv]: Waiting on 7.0 as I suspect it's the same engine as FFXVI
+[^ffxiv]: Waiting on 7.0
 
 ### Save editors
 
