@@ -24,27 +24,33 @@ private: true
 - glTF-Legiayayana-EXT: Personal glTF Extensions[^gltf]
 - Kobold: General Purpose Game Engine[^kobold]
 - pridegen: Untitled Pride Emoji Generator Project
+- shard: megabundle utility for archiving incremental files[^shard]
 - TLSF Memory Arena (DragonLib, astrastl)[^tlsf]
 - WEMSharp: Wwise WEM and BNK parser in dotnet[^wem]
-- shard: megabundle utility for archiving incremental files[^shard]
 
-[^tlsf]: Implementing this in C# is hard
 [^fib]: Implementing this at all is hard
-[^kobold]: General Puprose Game Engines are a multi-person, decade-long endeavour that I haven't even started yet
 [^gltf]: Delayed until I actually write something that can use it
-[^wem]: Lost interest.
+[^kobold]: General Puprose Game Engines are a multi-person, decade-long endeavour that I haven't even started yet
 [^shard]: Feature complete, but needs testing and polishing.
+[^tlsf]: Implementing this in C# is hard
+[^wem]: Lost interest.
 
 ## Game-related projects
 
 These usually are relating to asset conversion and mod capabilities.
 
+This usually reflects what games I'm playing, so progress comes and goes as I get or lose interest.
+
 - EVE-Blender: EVE-Blender interopability plugins for artists
-- EVE-Foxcat: EVE Multiboxing Switcher
+- EVE-Foxcat: EVE Multiboxing Switcher[^foxcat]
 - Rivet: Ratchet & Clank: Rift Apart (Insomniac Engine)
 - Rocket: Gaurdians (Dawn Engine)
-- Tosca: Crucible (Lumberyard)
-- Witch: FFXV/Forspoken (Luminous Engine)
+- Tosca: Crucible (Lumberyard)[^crucible]
+- Witch: FFXV/Forspoken (Luminous Engine)[^luminy]
+
+[^crucible]: It's the only game that used the public version of Lumberyard completely, New World has replaced a lot of systems with private modules.
+[^foxcat]: I realize EVE-O exists, but I wanted to make one that could work on Linux and macOS as well. 
+[^luminy]: FFXV and Forspoken are the only games to use Luminous, while technically a fork of Crystal Tools, I don't expect to see Luminous' Ebony structures in Crystal Tools or the FFXIV fork. So Fang and Yshtola will be more purpose built for their respective forks.
 
 ### Stalled
 
@@ -60,8 +66,8 @@ These usually are relating to asset conversion and mod capabilities.
 - Yordle: League of Legends
 - Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)[^ffxiv]
 
-[^stormbird]: Waiting on HFW PC Port (if ever)
 [^ffxiv]: Waiting on 7.0
+[^stormbird]: Waiting on HFW PC Port (if ever)
 
 ### Save editors
 
