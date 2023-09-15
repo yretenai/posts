@@ -2,7 +2,7 @@
 title: projects
 short: surely this will help me actually finish them
 date: 2023-01-09 5:27 AM
-updated: 2023-08-13 5:20 PM
+updated: 2023-09-15 2:02 PM
 private: true
 ---
 
@@ -10,9 +10,9 @@ private: true
 
 ## Personal Projects
 
-- cribbit: C TACT library
 - Jackalope: imgui-based audio player.
 - lgbt-colors: a collection of LGBT-related colors
+- rivet: interop for Ratchet and Clank: Rift Apart (and other igEngine games)
 - Snep: Blender launcher/updater
 - Wytch: Activitypub platform[^wytch]
 
@@ -55,6 +55,7 @@ This usually reflects what games I'm playing, so progress comes and goes as I ge
 ### Stalled
 
 - Ardenweald: WoW
+- cribbit: C TACT library
 - Dragapult: PkMn SwSh/SV (GFLib3)
 - Fang: FFXIII (Crystal Tools)
 - Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)
