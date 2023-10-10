@@ -1,76 +1,44 @@
 ---
-title: projects
-short: surely this will help me actually finish them
-date: 2023-01-09 5:27 AM
-updated: 2023-09-15 2:02 PM
+title: active projects
+short: 
+date: 2023-10-10 5:00 PM
 private: true
 ---
 
-# Projects in alphabetical order
+# Active Projects
 
-## Personal Projects
+[All Projects](PROJECTS2.html)
 
-- Jackalope: imgui-based audio player.
-- lgbt-colors: a collection of LGBT-related colors
-- rivet: interop for Ratchet and Clank: Rift Apart (and other igEngine games)
-- Snep: Blender launcher/updater
-- Wytch: Activitypub platform[^wytch]
+## Planning 
 
-[^wytch]: Design only. Pending on library, and my ability to comprehend activitypub systems which I'm doing by tinkering on my Misskey fork.
+### Jackalope<br/> src: [gh](https://github.com/yretenai/jackalope), [nothg](https://nothg.chronovore.dev/apps/jackalope/); lang: c++; license: MPL-2.0
 
-### Stalled
+A modular audio player built using imgui.
 
-- Fibonacci Heap (DragonLib, astrastl)[^fib]
-- glTF-Legiayayana-EXT: Personal glTF Extensions[^gltf]
-- Kobold: General Purpose Game Engine[^kobold]
-- pridegen: Untitled Pride Emoji Generator Project
-- shard: megabundle utility for archiving incremental files[^shard]
-- TLSF Memory Arena (DragonLib, astrastl)[^tlsf]
-- WEMSharp: Wwise WEM and BNK parser in dotnet[^wem]
+### Gamecart<br/> src: [gh](https://github.com/yretenai/gamecart), [nothg](https://nothg.chronovore.dev/apps/gamecart/); lang: c#; license: MPL-2.0
 
-[^fib]: Implementing this at all is hard
-[^gltf]: Delayed until I actually write something that can use it
-[^kobold]: General Puprose Game Engines are a multi-person, decade-long endeavour that I haven't even started yet
-[^shard]: Feature complete, but needs testing and polishing.
-[^tlsf]: Implementing this in C# is hard
-[^wem]: Lost interest.
+An extensible game ROM manager and launcher built using C# Avalonia.
 
-## Game-related projects
+### Wytch<br/> src: [gh](https://github.com/yretenai/wytch), [nothg](https://nothg.chronovore.dev/wytch/wytch/); lang: c#; license: MPL-2.0
 
-These usually are relating to asset conversion and mod capabilities.
+Fediverse Server and Client ActivityPub Implementation.
 
-This usually reflects what games I'm playing, so progress comes and goes as I get or lose interest.
+## In Development
 
-- EVE-Blender: EVE-Blender interopability plugins for artists
-- EVE-Foxcat: EVE Multiboxing Switcher[^foxcat]
-- Rivet: Ratchet & Clank: Rift Apart (Insomniac Engine)
-- Rocket: Gaurdians (Dawn Engine)
-- Tosca: Crucible (Lumberyard)[^crucible]
-- Witch: FFXV/Forspoken (Luminous Engine)[^luminy]
+### Shard<br/> src: [gh](https://github.com/yretenai/shard), [nothg](https://nothg.chronovore.dev/apps/shard/); lang: c#; license: 0BSD
 
-[^crucible]: It's the only game that used the public version of Lumberyard completely, New World has replaced a lot of systems with private modules.
-[^foxcat]: I realize EVE-O exists, but I wanted to make one that could work on Linux and macOS as well. 
-[^luminy]: FFXV and Forspoken are the only games to use Luminous, while technically a fork of Crystal Tools, I don't expect to see Luminous' Ebony structures in Crystal Tools or the FFXIV fork. So Fang and Yshtola will be more purpose built for their respective forks.
+Utility to create super-compressed archives for keeping versioned backup files.
 
-### Stalled
+## Game Modding Projects
 
-- Ardenweald: WoW
-- cribbit: C TACT library
-- Dragapult: PkMn SwSh/SV (GFLib3)
-- Fang: FFXIII (Crystal Tools)
-- Feldspar: Atelier/NT/DoA6 (GustGL, KTGL1.5, KTGL2)
-- Hiss: Control (Northlight 64-bit)
-- Mesonexus: Game Maker
-- Rikku: FFX/X-2 Remaster (PhyreEngine?)
-- Stormbird: Horizon (Decima Engine)[^stormbird]
-- Wrench: Godot
-- Yordle: League of Legends
-- Yshtola: FFXIV (Modified Crystal-Tools/Luminious Hybrid)[^ffxiv]
+### rivet<br/> src: [gh](https://github.com/yretenai/rivet), [nothg](https://nothg.chronovore.dev/game-interop/rivet/); lang: c++; license: MPL-2.0
 
-[^ffxiv]: Waiting on 7.0
-[^stormbird]: Waiting on HFW PC Port (if ever)
+Third-party art tools for Luna<sup><small><small>?</small></small></sup> Engine[^luna-engine].
 
-### Save editors
+[^luna-engine]: Insomniac Games' Proprietary Engine. Name is assumed.
 
-- Arcstone: Core Keeper Save Editor
-- Skeep: Tiny Tina's Wonderland Save Editor
+### stormbird<br/> src: [gh](https://github.com/yretenai/stormbird), [nothg](https://nothg.chronovore.dev/game-interop/stormbird/); lang: c++; license: MPL-2.0
+
+Third-party art tools for Decima Engine[^decima-engine].
+
+[^decima-engine]: Guerrila Games' Proprietary Engine.
