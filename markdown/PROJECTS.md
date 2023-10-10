@@ -1,6 +1,6 @@
 ---
 title: active projects
-short: 
+short: these are things i am actually working on
 date: 2023-10-10 5:00 PM
 private: true
 ---
