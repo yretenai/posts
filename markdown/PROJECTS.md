@@ -13,11 +13,11 @@ private: true
 
 ### Jackalope<br/> src: [gh](https://github.com/yretenai/jackalope), [nothg](https://nothg.chronovore.dev/apps/jackalope/); lang: c++; license: MPL-2.0
 
-A modular audio player built using imgui.
+A modular audio player, displayed using imgui.
 
 ### Gamecart<br/> src: [gh](https://github.com/yretenai/gamecart), [nothg](https://nothg.chronovore.dev/apps/gamecart/); lang: c++; license: MPL-2.0
 
-An extensible game ROM manager and launcher built using C# Avalonia.
+An extensible game ROM manager and launcher, displayed using imgui<sup><small><small>?</small></small></sup>.
 
 ### Wytch<br/> src: [gh](https://github.com/yretenai/wytch), [nothg](https://nothg.chronovore.dev/wytch/wytch/); lang: ?; license: MPL-2.0
 
