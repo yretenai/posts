@@ -15,11 +15,11 @@ private: true
 
 A modular audio player built using imgui.
 
-### Gamecart<br/> src: [gh](https://github.com/yretenai/gamecart), [nothg](https://nothg.chronovore.dev/apps/gamecart/); lang: c#; license: MPL-2.0
+### Gamecart<br/> src: [gh](https://github.com/yretenai/gamecart), [nothg](https://nothg.chronovore.dev/apps/gamecart/); lang: c++; license: MPL-2.0
 
 An extensible game ROM manager and launcher built using C# Avalonia.
 
-### Wytch<br/> src: [gh](https://github.com/yretenai/wytch), [nothg](https://nothg.chronovore.dev/wytch/wytch/); lang: c#; license: MPL-2.0
+### Wytch<br/> src: [gh](https://github.com/yretenai/wytch), [nothg](https://nothg.chronovore.dev/wytch/wytch/); lang: ?; license: MPL-2.0
 
 Fediverse Server and Client ActivityPub Implementation.
 

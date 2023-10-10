@@ -34,7 +34,7 @@ main {
 }
 
 header, h1 {
-	font-size: 1.6em;
+	font-size: 1.7em;
 }
 
 h2 {
@@ -43,13 +43,13 @@ h2 {
 }
 
 h3 {
-	font-size: 1.3em;
+	font-size: 1.2em;
 	font-weight: 400;
 }
 
 h4 {
-	font-size: 1.2em;
-	font-weight: 100;
+	font-size: 1.1em;
+	font-weight: 400;
 }
 
 h5 {
