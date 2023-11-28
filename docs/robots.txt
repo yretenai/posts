@@ -7,6 +7,16 @@ Disallow: /
 Allow: /ads.txt
 Allow: /app-ads.txt
 
+User-Agent: Adsbot-Google
+Disallow: /
+Allow: /ads.txt
+Allow: /app-ads.txt
+
+User-Agent: Adsbot-Google-Mobile
+Disallow: /
+Allow: /ads.txt
+Allow: /app-ads.txt
+
 User-Agent: TurnitinBot
 Disallow: /
 
@@ -29,4 +39,37 @@ User-agent: ChatGPT-User
 Disallow: /
 
 User-agent: GPTBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+User-Agent: Mediapartners-Google
+Disallow: /
+
+User-Agent: anthropic-ai
+Disallow: /
+
+User-Agent: Omgilibot
+Disallow: /
+
+User-Agent: FacebookBot
+Disallow: /
+
+User-Agent: Bingbot
+Disallow: /
+
+User-Agent: AdIdxBot
+Disallow: /
+
+User-Agent: FacebookBot
+Disallow: /
+
+User-Agent: Slurp
 Disallow: /
