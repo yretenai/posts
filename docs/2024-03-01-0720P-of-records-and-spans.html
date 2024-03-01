@@ -44,58 +44,58 @@
             <a href="index.html">back to index</a> - <a href="https://raw.githubusercontent.com/yretenai/posts/develop/markdown/2024-03-01-0720P-of-records-and-spans.md">view source</a><br>
         </nav>
         <article>
-            <p>This post is mostly just me speaking fondly of Spans and Records 
-with no real technical information besides how cool they are and their use cases. </p>
-<p>This is not a guide, or tutorial, or a technical writeup. 
-Just good vibes about new language features. </p>
-<p>Beware! It does get a bit rambly at times. </p>
-<p>Anyway, let&rsquo;s go back a few years, to the year 2015&hellip; </p>
+            <p>This post is mostly just me speaking fondly of Spans and Records
+with no real technical information besides how cool they are and their use cases.</p>
+<p>This is not a guide, or tutorial, or a technical writeup.
+Just good vibes about new language features.</p>
+<p>Beware! It does get a bit rambly at times.</p>
+<p>Anyway, let&rsquo;s go back a few years, to the year 2015&hellip;</p>
 <h2 id="spans">Spans</h2>
-<p>.NET 2015 just released, bringing along with it better control over the 
-.NET Garbage Collector and a little footnote that reads: </p>
+<p>.NET 2015 just released, bringing along with it better control over the
+.NET Garbage Collector and a little footnote that reads:</p>
 <blockquote>
-<p>.NET Core packages such as the immutable collections, SIMD APIs, and 
-networking APIs such as those found in the System.Net.Http namespace 
-are now available as open-source packages on GitHub. </p>
+<p>.NET Core packages such as the immutable collections, SIMD APIs, and
+networking APIs such as those found in the System.Net.Http namespace
+are now available as open-source packages on GitHub.</p>
 </blockquote>
-<p>.NET was moving to open source. </p>
-<p>Fast forward another 3 years, it&rsquo;s now 2018. </p>
-<p>An update to .NET Core is released, .NET Core 2.1, bringing with it four new 
-types that represent a whole new programming paradigm. Span, and Memory. </p>
-<p>Span is unique in that it&rsquo;s a <strong>reference struct.</strong> Preventing it from moving 
-out of the stack. </p>
+<p>.NET was moving to open source.</p>
+<p>Fast forward another 3 years, it&rsquo;s now 2018.</p>
+<p>An update to .NET Core is released, .NET Core 2.1, bringing with it four new
+types that represent a whole new programming paradigm. Span, and Memory.</p>
+<p>Span is unique in that it&rsquo;s a <strong>reference struct.</strong> Preventing it from moving
+out of the stack.</p>
 <h3 id="wait-c-has-a-stack">Wait, C# has a stack?</h3>
-<p>Yes! C# has several tiers of memory management, the stack exists in the smallest 
-area. This space always exist, and it&rsquo;s where variables end up. 
-Every time you do a <code>new AwesomeClass()</code> or <code>new string[]</code>, it makes this in 
-the heap and just stores a bit of info on where this is in the heap in the stack </p>
+<p>Yes! C# has several tiers of memory management, the stack exists in the smallest
+area. This space always exist, and it&rsquo;s where variables end up.
+Every time you do a <code>new AwesomeClass()</code> or <code>new string[]</code>, it makes this in
+the heap and just stores a bit of info on where this is in the heap in the stack</p>
 <h3 id="so-how-does-this-relate-to-span">So how does this relate to Span?</h3>
-<p>When you create a span, either via <code>new Span&lt;T&gt;()</code> or via <code>(Span&lt;T&gt;) SomeArray</code>, 
-this value entirely lives in the stack and only in the stack. Meaning you cannot 
-store it in the heap. </p>
+<p>When you create a span, either via <code>new Span&lt;T&gt;()</code> or via <code>(Span&lt;T&gt;) SomeArray</code>,
+this value entirely lives in the stack and only in the stack. Meaning you cannot
+store it in the heap.</p>
 <h3 id="isnt-this-a-massive-issue-with-oop-designs">Isn&rsquo;t this a massive issue with OOP designs?</h3>
-<p>Not if you consider what Span is used for. Span allows you to quickly wrap and 
-manipulate structures and arrays without actually copying memory repeatedly. </p>
-<p>Let&rsquo;s say I&rsquo;m reading a small file, and I need to read the opening for a blog 
-summary. This line is expected to be about&hellip; 40 characters long. What I can do 
-is read this line without actually allocating any heap memory using <code>stackalloc</code>. 
-Turns out this is a massive speed improvement. Who guessed not allocating memory 
-is faster? </p>
-<p>Memory is the functional equivalent of Span, except that it lives in the heap. 
-This means it has the luxury of granting a Span (without allocating more 
-memory!) and having access to all of the features, such as <em>Slicing.</em> </p>
+<p>Not if you consider what Span is used for. Span allows you to quickly wrap and
+manipulate structures and arrays without actually copying memory repeatedly.</p>
+<p>Let&rsquo;s say I&rsquo;m reading a small file, and I need to read the opening for a blog
+summary. This line is expected to be about&hellip; 40 characters long. What I can do
+is read this line without actually allocating any heap memory using <code>stackalloc</code>.
+Turns out this is a massive speed improvement. Who guessed not allocating memory
+is faster?</p>
+<p>Memory is the functional equivalent of Span, except that it lives in the heap.
+This means it has the luxury of granting a Span (without allocating more
+memory!) and having access to all of the features, such as <em>Slicing.</em></p>
 <h3 id="slicing">Slicing?</h3>
-<p>Slicing is taking a portion of an array, in such that you can manipulate and 
-move it around better. With memory and spans, it just makes a new struct with 
-the same data with some info to only work on that specific range.No data gets 
-copied, whereas making a slice in Arrays requires building (and copying!) a 
-whole second array. </p>
+<p>Slicing is taking a portion of an array, in such that you can manipulate and
+move it around better. With memory and spans, it just makes a new struct with
+the same data with some info to only work on that specific range.No data gets
+copied, whereas making a slice in Arrays requires building (and copying!) a
+whole second array.</p>
 <p>Using Span (when allocated using <code>stackalloc</code>) and Memory buffers (if you need
-to allocate in to the heap), you can easily avoid repeatedly allocating and 
+to allocate in to the heap), you can easily avoid repeatedly allocating and
 duplicating data which in turn results in major speed gains.</p>
 <h3 id="but-what-about-native-interopability">But what about Native Interopability?</h3>
-<p>You know how, if you want to pass an array into a native library method, 
-you would have to do something like: </p>
+<p>You know how, if you want to pass an array into a native library method,
+you would have to do something like:</p>
 <div class="codehilite"><pre><span></span><code><span class="na">[DllImport]</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">NativeCall</span><span class="p">(</span><span class="kt">byte</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
 
 <span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">myArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="p">[</span><span class="m">100</span><span class="p">];</span>
@@ -106,24 +106,24 @@ you would have to do something like: </p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Well, using Memory this is not only safer, but also a way nicer API. </p>
+<p>Well, using Memory this is not only safer, but also a way nicer API.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">Memory</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">&gt;</span><span class="w"> </span><span class="n">myArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="p">[</span><span class="m">100</span><span class="p">];</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">memoryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myArray</span><span class="p">.</span><span class="n">Pin</span><span class="p">();</span>
 <span class="n">NativeCall</span><span class="p">(</span><span class="n">memoryHandle</span><span class="p">.</span><span class="n">Pointer</span><span class="p">,</span><span class="w"> </span><span class="n">myArray</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
 </code></pre></div>
 
-<p>Pretty cool huh? </p>
+<p>Pretty cool huh?</p>
 <h2 id="records">Records</h2>
-<p>We&rsquo;re still in 2018, so let&rsquo;s move forwards a bit to 2020. 
-.NET 5 just released, marking the start of a new era. 
-Dotnet is finally, fully and properly cross platform. 
-With it comes a new kind of structure, <code>record</code> and <code>record struct</code>. </p>
+<p>We&rsquo;re still in 2018, so let&rsquo;s move forwards a bit to 2020.
+.NET 5 just released, marking the start of a new era.
+Dotnet is finally, fully and properly cross platform.
+With it comes a new kind of structure, <code>record</code> and <code>record struct</code>.</p>
 <h3 id="how-is-this-different-from-class-and-struct-arent-they-just-the-same">How is this different from <code>class</code> and <code>struct</code>, aren&rsquo;t they just the same?</h3>
-<p>Functionally, there are a few different expectations with records that are 
-quite important. <em>Records prefer to be immutable.</em> 
-It also introduced a few concepts such as 
-<strong>primary constructors and init-only properties</strong> </p>
-<p>Let&rsquo;s imagine I have a class called <code>MeowAction</code> that is something like: </p>
+<p>Functionally, there are a few different expectations with records that are
+quite important. <em>Records prefer to be immutable.</em>
+It also introduced a few concepts such as
+<strong>primary constructors and init-only properties</strong></p>
+<p>Let&rsquo;s imagine I have a class called <code>MeowAction</code> that is something like:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MeowAction</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Subject</span><span class="w"> </span><span class="n">MeowedAt</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -140,20 +140,20 @@ It also introduced a few concepts such as
 <span class="k">new</span><span class="w"> </span><span class="nf">MeowAction</span><span class="p">(</span><span class="n">Volume</span><span class="p">.</span><span class="n">Loud</span><span class="p">,</span><span class="w"> </span><span class="n">RandomStranger</span><span class="p">());</span>
 </code></pre></div>
 
-<p>Simple meow-keeping class for a meow auditing system. However, as a data holding class 
-it&rsquo;s still doing some amount of predictable copying (which can be an issue!) </p>
-<p>What if I told you this is the exact use case for Records? </p>
-<p>Let&rsquo;s reimplement it as a record: </p>
+<p>Simple meow-keeping class for a meow auditing system. However, as a data holding class
+it&rsquo;s still doing some amount of predictable copying (which can be an issue!)</p>
+<p>What if I told you this is the exact use case for Records?</p>
+<p>Let&rsquo;s reimplement it as a record:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="nf">MeowAction</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="p">,</span><span class="w"> </span><span class="n">Subject</span><span class="w"> </span><span class="n">MeowedAt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="w"> </span><span class="n">MeowedAtTime</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="n">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Way smaller, right? </p>
+<p>Way smaller, right?</p>
 <h3 id="wait-init-what-happened-to-set">Wait, init? What happened to set?</h3>
-<p>With primary constructors in records, the default behavior is to mark properties as init-only. 
-As such, if you want to have the parameters as a normal get, set pair you would have to 
-something like: </p>
+<p>With primary constructors in records, the default behavior is to mark properties as init-only.
+As such, if you want to have the parameters as a normal get, set pair you would have to
+something like:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="nf">MeowAction</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="p">,</span><span class="w"> </span><span class="n">Subject</span><span class="w"> </span><span class="n">MeowedAt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Volume</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="w"> </span><span class="n">MeowedAtTime</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="n">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
@@ -161,10 +161,10 @@ something like: </p>
 </code></pre></div>
 
 <h3 id="could-this-not-be-integrated-into-a-class">Could this not be integrated into a class?</h3>
-<p>As it turns out, it has. 
-There&rsquo;s nothing stopping you from using <code>class</code> instead of <code>record</code>. </p>
-<p>So why all this fanfare then? Because that&rsquo;s the beauty of records. 
-It shows that C# is willing to adopt new designs, such as&hellip; </p>
+<p>As it turns out, it has.
+There&rsquo;s nothing stopping you from using <code>class</code> instead of <code>record</code>.</p>
+<p>So why all this fanfare then? Because that&rsquo;s the beauty of records.
+It shows that C# is willing to adopt new designs, such as&hellip;</p>
 <h3 id="it-has-deconstructors-for-the-primary-constructor-arguments">It has deconstructors for the primary constructor arguments</h3>
 <div class="codehilite"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MeowAction</span><span class="p">(</span><span class="n">Volume</span><span class="p">.</span><span class="n">Loud</span><span class="p">,</span><span class="w"> </span><span class="n">RandomStranger</span><span class="p">());</span>
 <span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">volume</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">action</span><span class="p">;</span>
@@ -187,19 +187,18 @@ It shows that C# is willing to adopt new designs, such as&hellip; </p>
 </code></pre></div>
 
 <h3 id="cloning">Cloning?!</h3>
-<p>Remember when I mentioned that Records prefer to be immutable? 
-This is how you get around that. </p>
-<p>Any property marked with <code>set</code> or <code>init</code> can be mutated only at 
-initialization using curly braces like this. The <code>with</code> keyword 
-just happens to copy every value that isn&rsquo;t specified. </p>
+<p>Remember when I mentioned that Records prefer to be immutable?
+This is how you get around that.</p>
+<p>Any property marked with <code>set</code> or <code>init</code> can be mutated using curly braces like this.
+The <code>with</code> keyword just happens to copy every value that isn&rsquo;t specified.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>This was a quite long but non-exhaustive fanfare for Span, Memory, and Records. 
-It&rsquo;s an exciting time to develop in C#, the language progressively is introducing 
-new featuers (such as nullability checks!) that improve code quality, speed and 
-overall encourage a more reliable way of programming. </p>
-<p>I encourage you to consider weaving stackalloc, Span, Memory, Records, 
-and Struct Records into your projects targeting .NET 7 and newer. </p>
-<p>Hint: A good use case of the <code>record</code> keyword are options or settings objects. </p>
+<p>This was a quite long but non-exhaustive fanfare for Span, Memory, and Records.
+It&rsquo;s an exciting time to develop in C#, the language progressively is introducing
+new featuers (such as nullability checks!) that improve code quality, speed and
+overall encourage a more reliable way of programming.</p>
+<p>I encourage you to consider weaving stackalloc, Span, Memory, Records,
+and Struct Records into your projects targeting .NET 7 and newer.</p>
+<p>Hint: A good use case of the <code>record</code> keyword are options or settings objects.</p>
 <h3 id="secret-afterword">Secret afterword</h3>
 <p>Did you know that you can have a <code>readonly record struct</code> which enforces complete immutability?</p>
             <footer>
