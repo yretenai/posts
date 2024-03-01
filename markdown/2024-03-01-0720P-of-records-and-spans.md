@@ -69,9 +69,9 @@ the same data with some info to only work on that specific range.No data gets
 copied, whereas making a slice in Arrays requires building (and copying!) a 
 whole second array. 
 
-Using both Span and Memory, together with `stackalloc` and re-using existing 
-buffers should you need toallocate into the heap either for persistence or 
-compliance, can see enormous speed benefits. 
+Using Span (when allocated using `stackalloc`) and Memory buffers (if you need
+to allocate in to the heap), you can easily avoid repeatedly allocating and 
+duplicating data which in turn results in major speed gains.
 
 ### But what about Native Interopability?
 

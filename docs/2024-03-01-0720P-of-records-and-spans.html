@@ -90,9 +90,9 @@ move it around better. With memory and spans, it just makes a new struct with
 the same data with some info to only work on that specific range.No data gets 
 copied, whereas making a slice in Arrays requires building (and copying!) a 
 whole second array. </p>
-<p>Using both Span and Memory, together with <code>stackalloc</code> and re-using existing 
-buffers should you need toallocate into the heap either for persistence or 
-compliance, can see enormous speed benefits. </p>
+<p>Using Span (when allocated using <code>stackalloc</code>) and Memory buffers (if you need
+to allocate in to the heap), you can easily avoid repeatedly allocating and 
+duplicating data which in turn results in major speed gains.</p>
 <h3 id="but-what-about-native-interopability">But what about Native Interopability?</h3>
 <p>You know how, if you want to pass an array into a native library method, 
 you would have to do something like: </p>
