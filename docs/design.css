@@ -239,8 +239,12 @@ header figure br:last-child {
 		margin-left: 0;
 	}
 
-	p, .codehilite, code, pre {
+	p {
 		margin-left: 26pt;
+	}
+
+	.codehilite, code, pre  {
+		margin-left: 0;
 	}
 
 	header figure, header h1 {
