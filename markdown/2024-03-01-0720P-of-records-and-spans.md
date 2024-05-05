@@ -42,7 +42,7 @@ the heap and just stores a bit of info on where this is in the heap in the stack
 
 ### So how does this relate to Span?
 
-When you create a span, either via `new Span<T>()` or via `(Span<T>) SomeArray`,
+When you create a span via `new Span<T>()` or read a memory segment via `(Span<T>) SomeArray`,
 this value entirely lives in the stack and only in the stack. Meaning you cannot
 store it in the heap.
 
