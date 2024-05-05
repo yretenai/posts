@@ -220,3 +220,7 @@ Hint: A good use case of the `record` keyword are options or settings objects.
 ### Secret afterword
 
 Did you know that you can have a `readonly record struct` which enforces complete immutability?
+
+### Special Thanks
+
+Thanks to [scarletquasar](https://github.com/scarletquasar) for some corrections.

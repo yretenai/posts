@@ -70,7 +70,7 @@ area. This space always exist, and it&rsquo;s where variables end up.
 Every time you do a <code>new AwesomeClass()</code> or <code>new string[]</code>, it makes this in
 the heap and just stores a bit of info on where this is in the heap in the stack</p>
 <h3 id="so-how-does-this-relate-to-span">So how does this relate to Span?</h3>
-<p>When you create a span, either via <code>new Span&lt;T&gt;()</code> or via <code>(Span&lt;T&gt;) SomeArray</code>,
+<p>When you create a span via <code>new Span&lt;T&gt;()</code> or read a memory segment via <code>(Span&lt;T&gt;) SomeArray</code>,
 this value entirely lives in the stack and only in the stack. Meaning you cannot
 store it in the heap.</p>
 <h3 id="isnt-this-a-massive-issue-with-oop-designs">Isn&rsquo;t this a massive issue with OOP designs?</h3>
@@ -201,6 +201,8 @@ and Struct Records into your projects targeting .NET 7 and newer.</p>
 <p>Hint: A good use case of the <code>record</code> keyword are options or settings objects.</p>
 <h3 id="secret-afterword">Secret afterword</h3>
 <p>Did you know that you can have a <code>readonly record struct</code> which enforces complete immutability?</p>
+<h3 id="special-thanks">Special Thanks</h3>
+<p>Thanks to <a href="https://github.com/scarletquasar">scarletquasar</a> for some corrections.</p>
             <footer>
                 created with <img src="emoji/heart.png" alt="love"> by <a href="https://github.com/yretenai">Ada</a> <img src="emoji/trans_lily.png" class="emoji" alt="transgender lilly emoji, "> <img src="emoji/lesbian_lily.png" class="emoji" alt="lesbian lily emoji"><br>
                 <span><a href="https://github.com/yretenai/posts">source code</a> - <a href="emoji/NOTICE.txt">emoji credit notice</a> - <a href="LICENSE">licensed under 0BSD</a></span><br>
