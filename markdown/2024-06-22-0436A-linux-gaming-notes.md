@@ -1,5 +1,5 @@
 ---
-title: Some notes about gaming on Linux
+title: some notes about gaming on linux
 short: this is mostly so i don't forget
 date: 2024-06-22 04:36 AM
 ---
