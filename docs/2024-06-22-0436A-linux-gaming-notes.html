@@ -73,9 +73,7 @@ It is the number after <code>/app/</code> in the Steam store link, alternatively
 <h3 id="dauntless">Dauntless</h3>
 <p>If you randomly crash, it might be because of stack smashing due to a race condition.</p>
 <p>I have managed to reduce the frequency of crashes by limiting how many resources the game can use.</p>
-<div class="codehilite"><pre><span></span><code>env DXVK_CONFIG=&quot;dxvk.numCompilerThreads=1&quot; WINE_CPU_TOPOLOGY=&quot;4:0,2,4,6&quot; %command%
-</code></pre></div>
-
+<p><code>env DXVK_CONFIG="dxvk.numCompilerThreads=1" WINE_CPU_TOPOLOGY="4:0,2,4,6" %command%</code></p>
 <p>If there is too much lag, you might want to redefine the CPU topology, i.e. <code>WINE_CPU_TOPOLOGY="8:0,1,2,3,4,5,6,7"</code></p>
             <footer>
                 created with <img src="emoji/heart.png" alt="love"> by <a href="https://github.com/yretenai">Ada</a> <img src="emoji/trans_lily.png" class="emoji" alt="transgender lilly emoji, "> <img src="emoji/lesbian_lily.png" class="emoji" alt="lesbian lily emoji"><br>
