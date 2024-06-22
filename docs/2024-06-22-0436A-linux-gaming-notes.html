@@ -27,8 +27,10 @@
         <header>
             <h1>ada's blog</h1>
             <figure>
-                this is mostly so i don't forget
-                <br/>
+                <div>
+                    <h2>some notes about gaming on linux</h2>
+                    this is mostly so i don't forget
+                </div>
                 <span>
                     last updated at
                     <time datetime="2024-06-22T05:24:00">2024-06-22 5:24 AM</time>
@@ -37,14 +39,13 @@
                     published at
                     <time datetime="2024-06-22T04:36:00">2024-06-22 4:36 AM</time>
                 </span>
-                <br/>
             </figure>
         </header>
         <nav>
             <a href="index.html">back to index</a> - <a href="https://raw.githubusercontent.com/yretenai/posts/develop/markdown/2024-06-22-0436A-linux-gaming-notes.md">view source</a><br>
         </nav>
         <article>
-            <p>I recently migrated to using Linux full time.
+<p>I recently migrated to using Linux full time.
 You need to not look far to find an ocean of reasons why Windows has been a bit miserable.</p>
 <p>This post mainly serves as a logbook for fixes and workarounds for making games (and some applications) work on Linux.</p>
 <h2 id="eac-failed-to-intialize-dependencies-error">EAC &ldquo;Failed to Intialize Dependencies&rdquo; error</h2>
@@ -68,6 +69,14 @@ and the game has to support ray tracing in any capacity (i.e. World of Warcraft,
 <p>Change <code>~/.steam/root/steamapps</code> to the SteamLibrary steamapps folder if installed in a steam library folder.</p>
 <p>Change 489830 to match the steam id of the mod tool the game is for, 489830 is Skyrim SE/AE.
 It is the number after <code>/app/</code> in the Steam store link, alternatively look it up on SteamDB.</p>
+<h2 id="game-specific-fixes">Game-Specific Fixes</h2>
+<h3 id="dauntless">Dauntless</h3>
+<p>If you randomly crash, it might be because of stack smashing due to a race condition.</p>
+<p>I have managed to reduce the frequency of crashes by limiting how many resources the game can use.</p>
+<div class="codehilite"><pre><span></span><code>env DXVK_CONFIG=&quot;dxvk.numCompilerThreads=1&quot; WINE_CPU_TOPOLOGY=&quot;4:0,2,4,6&quot; %command%
+</code></pre></div>
+
+<p>If there is too much lag, you might want to redefine the CPU topology, i.e. <code>WINE_CPU_TOPOLOGY="8:0,1,2,3,4,5,6,7"</code></p>
             <footer>
                 created with <img src="emoji/heart.png" alt="love"> by <a href="https://github.com/yretenai">Ada</a> <img src="emoji/trans_lily.png" class="emoji" alt="transgender lilly emoji, "> <img src="emoji/lesbian_lily.png" class="emoji" alt="lesbian lily emoji"><br>
                 <span><a href="https://github.com/yretenai/posts">source code</a> - <a href="emoji/NOTICE.txt">emoji credit notice</a> - <a href="LICENSE">licensed under 0BSD</a></span><br>

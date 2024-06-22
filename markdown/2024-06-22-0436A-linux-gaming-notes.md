@@ -48,3 +48,17 @@ Change `~/.steam/root/steamapps` to the SteamLibrary steamapps folder if install
 
 Change 489830 to match the steam id of the mod tool the game is for, 489830 is Skyrim SE/AE.
 It is the number after `/app/` in the Steam store link, alternatively look it up on SteamDB.
+
+## Game-Specific Fixes
+
+### Dauntless
+
+If you randomly crash, it might be because of stack smashing due to a race condition.
+
+I have managed to reduce the frequency of crashes by limiting how many resources the game can use.
+
+```
+env DXVK_CONFIG="dxvk.numCompilerThreads=1" WINE_CPU_TOPOLOGY="4:0,2,4,6" %command%
+```
+
+If there is too much lag, you might want to redefine the CPU topology, i.e. `WINE_CPU_TOPOLOGY="8:0,1,2,3,4,5,6,7"`

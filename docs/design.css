@@ -278,6 +278,10 @@ header figure br:last-child {
 	}
 }
 
+header h2 {
+	margin: 0;
+}
+
 article > *:nth-child(6n+1)::selection, article > *:nth-child(6n+1) *::selection {
     background: rgba(204, 250, 158, 0.25);
 }
