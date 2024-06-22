@@ -2,7 +2,7 @@
 title: some notes about gaming on linux
 short: this is mostly so i don't forget
 date: 2024-06-22 4:36 AM
-updated: 2024-06-22 5:17 AM
+updated: 2024-06-22 5:20 AM
 ---
 
 I recently migrated to using Linux full time.
@@ -35,7 +35,8 @@ and the game has to support ray tracing in any capacity (i.e. World of Warcraft,
 
 You can add the mod tools as a non-steam game, given it has a GUI.
 
-When you do, set the launch arguments to `STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`.
+When you do, force it to use **the same compatability tools as the game** and set the launch arguments to `STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`.
+
 You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game *not* the non-steam app when installing.
 
 Change `~/.steam/root/steamapps` to the SteamLibrary steamapps folder if installed in a steam library folder.

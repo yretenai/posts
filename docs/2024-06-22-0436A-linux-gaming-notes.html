@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://chronovore.dev/posts/2024-06-22-0436A-linux-gaming-notes.html">
     <meta property="og:type" content="article">
     <meta property="og:author" content="Ada">
-    <meta property="article:published_time" content="2024-06-22T05:17:00">
+    <meta property="article:published_time" content="2024-06-22T05:20:00">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                 <br/>
                 <span>
                     last updated at
-                    <time datetime="2024-06-22T05:17:00">2024-06-22 5:17 AM</time>
+                    <time datetime="2024-06-22T05:20:00">2024-06-22 5:20 AM</time>
                 </span>
                 <span>
                     published at
@@ -61,8 +61,8 @@ you might be able to tell Mesa and VKD3D that ray-tracing can be enabled by usin
 and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)</p>
 <h2 id="windows-only-third-party-mod-tooling">Windows-only Third-Party Mod Tooling</h2>
 <p>You can add the mod tools as a non-steam game, given it has a GUI.</p>
-<p>When you do, set the launch arguments to <code>STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%</code>.
-You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game <em>not</em> the non-steam app when installing.</p>
+<p>When you do, force it to use <strong>the same compatability tools as the game</strong> and set the launch arguments to <code>STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%</code>.</p>
+<p>You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game <em>not</em> the non-steam app when installing.</p>
 <p>Change <code>~/.steam/root/steamapps</code> to the SteamLibrary steamapps folder if installed in a steam library folder.</p>
 <p>Change 489830 to match the steam id of the mod tool the game is for, 489830 is Skyrim SE/AE.
 It is the number after <code>/app/</code> in the Steam store link, alternatively look it up on SteamDB.</p>
