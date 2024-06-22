@@ -2,7 +2,7 @@
 title: some notes about gaming on linux
 short: this is mostly so i don't forget
 date: 2024-06-22 4:36 AM
-updated: 2024-06-22 5:20 AM
+updated: 2024-06-22 5:24 AM
 ---
 
 I recently migrated to using Linux full time.
@@ -14,8 +14,11 @@ This post mainly serves as a logbook for fixes and workarounds for making games 
 
 This is likely due to a `SDL_VIDEODRIVER` and/or `SDL_VIDEO_DRIVER` environment variable being present.
 
-Modify the launch targets to call `env --unset=SDL_VIDEODRIVER --unset=SDL_VIDEO_DRIVER %command%` instead,
-alternatively set the variable to an empty string in whatever launch manager you're using (Heroic, Lutris).
+Try using the following launch arguments:
+
+`env --unset=SDL_VIDEODRIVER --unset=SDL_VIDEO_DRIVER %command%`
+
+Alternatively, set the variable to an empty string in whatever launch manager you're using (Heroic, Lutris).
 
 ## Enabling DX12 Ray Tracing
 
@@ -35,7 +38,9 @@ and the game has to support ray tracing in any capacity (i.e. World of Warcraft,
 
 You can add the mod tools as a non-steam game, given it has a GUI.
 
-When you do, force it to use **the same compatability tools as the game** and set the launch arguments to `STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`
+When you do, force it to use **the same compatability tools as the game** and set the launch arguments to:
+
+`STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`
 
 You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game *not* the non-steam app when installing.
 
