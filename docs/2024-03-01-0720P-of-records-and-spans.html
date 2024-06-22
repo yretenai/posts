@@ -78,7 +78,7 @@ store it in the heap.</p>
 manipulate structures and arrays without actually copying memory repeatedly.</p>
 <p>Let&rsquo;s say I&rsquo;m reading a small file, and I need to read the opening for a blog
 summary. This line is expected to be about&hellip; 40 characters long. What I can do
-is read this line without actually allocating any heap memory using <code>stackalloc</code>.
+is read this line without actually allocating any heap memory using <code>stackalloc</code>
 Turns out this is a massive speed improvement. Who guessed not allocating memory
 is faster?</p>
 <p>Memory is the functional equivalent of Span, except that it lives in the heap.
@@ -117,7 +117,7 @@ you would have to do something like:</p>
 <p>We&rsquo;re still in 2018, so let&rsquo;s move forwards a bit to 2020.
 .NET 5 just released, marking the start of a new era.
 Dotnet is finally, fully and properly cross platform.
-With it comes a new kind of structure, <code>record</code> and <code>record struct</code>.</p>
+With it comes a new kind of structure, <code>record</code> and <code>record struct</code></p>
 <h3 id="how-is-this-different-from-class-and-struct-arent-they-just-the-same">How is this different from <code>class</code> and <code>struct</code>, aren&rsquo;t they just the same?</h3>
 <p>Functionally, there are a few different expectations with records that are
 quite important. <em>Records prefer to be immutable.</em>
@@ -162,7 +162,7 @@ something like:</p>
 
 <h3 id="could-this-not-be-integrated-into-a-class">Could this not be integrated into a class?</h3>
 <p>As it turns out, it has.
-There&rsquo;s nothing stopping you from using <code>class</code> instead of <code>record</code>.</p>
+There&rsquo;s nothing stopping you from using <code>class</code> instead of <code>record</code></p>
 <p>So why all this fanfare then? Because that&rsquo;s the beauty of records.
 It shows that C# is willing to adopt new designs, such as&hellip;</p>
 <h3 id="it-has-deconstructors-for-the-primary-constructor-arguments">It has deconstructors for the primary constructor arguments</h3>

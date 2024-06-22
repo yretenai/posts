@@ -53,7 +53,7 @@ manipulate structures and arrays without actually copying memory repeatedly.
 
 Let's say I'm reading a small file, and I need to read the opening for a blog
 summary. This line is expected to be about... 40 characters long. What I can do
-is read this line without actually allocating any heap memory using `stackalloc`.
+is read this line without actually allocating any heap memory using `stackalloc`
 Turns out this is a massive speed improvement. Who guessed not allocating memory
 is faster?
 
@@ -104,7 +104,7 @@ Pretty cool huh?
 We're still in 2018, so let's move forwards a bit to 2020.
 .NET 5 just released, marking the start of a new era.
 Dotnet is finally, fully and properly cross platform.
-With it comes a new kind of structure, `record` and `record struct`.
+With it comes a new kind of structure, `record` and `record struct`
 
 ### How is this different from `class` and `struct`, aren't they just the same?
 
@@ -163,7 +163,7 @@ public record MeowAction(float Volume, Subject MeowedAt) {
 ### Could this not be integrated into a class?
 
 As it turns out, it has.
-There's nothing stopping you from using `class` instead of `record`.
+There's nothing stopping you from using `class` instead of `record`
 
 So why all this fanfare then? Because that's the beauty of records.
 It shows that C# is willing to adopt new designs, such as...

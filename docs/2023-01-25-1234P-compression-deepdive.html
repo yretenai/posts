@@ -87,7 +87,7 @@ In other cases parts of the data can be seen in the compressed data.</p>
 It comes in a lot of flavors and figuring out which one is used can be difficult.</p>
 <p>To figure out if a file might be compressed with an Lz algorithm, you should look for the following:</p>
 <ul>
-<li>The first byte is almost always <code>0F</code>, <code>1F</code>, <code>F0</code>, or <code>FF</code>.</li>
+<li>The first byte is almost always <code>0F</code>, <code>1F</code>, <code>F0</code>, or <code>FF</code></li>
 <li>The following bytes are seemingly uncompressed data.</li>
 <li>The first byte repeats itself frequently in the data, especially at the start of the file.</li>
 </ul>
@@ -114,7 +114,7 @@ The minimal number of literals read is 4.</p>
 <p>DEFLATE<sup id="fnref:zlib"><a class="footnote-ref" href="#fn:zlib">7</a></sup> is a compression algorithm that is used in many files, and you will most likely have already seen it if you do any amount of file analysis.</p>
 <p>ZLib uses a DEFLATE block with a header, and ADLER32 as it&rsquo;s checksum algorithm.</p>
 <h3 id="zlib">ZLib</h3>
-<p>ZLib<sup id="fnref:rfc1950"><a class="footnote-ref" href="#fn:rfc1950">8</a></sup> preprends a 2 byte header to the compressed block (usually deflate). This usually is <code>78 9C</code> or <code>78 DA</code>.</p>
+<p>ZLib<sup id="fnref:rfc1950"><a class="footnote-ref" href="#fn:rfc1950">8</a></sup> preprends a 2 byte header to the compressed block (usually deflate). This usually is <code>78 9C</code> or <code>78 DA</code></p>
 <p>The first byte is the compression method, and the second byte has some flags. The compression method is usually <code>8</code>, which is DEFLATE. </p>
 <div class="codehilite"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">zlib_header</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">compression_method</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
@@ -170,7 +170,7 @@ The <code>dict</code> flag is set if a dictionary is used, and the <code>level</
 
 <h3 id="zdictionary">ZDictionary</h3>
 <p>ZStandard might use a dictionary<sup id="fnref:zdict"><a class="footnote-ref" href="#fn:zdict">13</a></sup> to compress the data, and the dictionary is stored either as a separate file, or in the same file as the compressed data. In some cases it might be in the executable itself (very rare!)
-Documentation on ZDict is sparse, however we know that the magic value is <code>37 A4 30 EC</code>.</p>
+Documentation on ZDict is sparse, however we know that the magic value is <code>37 A4 30 EC</code></p>
 <p>The ZDict header has the following format:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">zdict_header</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span>
@@ -192,7 +192,7 @@ Documentation on ZDict is sparse, however we know that the magic value is <code>
 </code></pre></div>
 
 <p>Compression type will be between 0 and 13 as of Oodle Version 9 (oo2core_9), and the checksum used is a modified Jenkins algorithm. 
-From this we can deduce that the second byte will be between <code>00</code> and <code>0D</code>, or <code>80</code> and <code>8D</code>.</p>
+From this we can deduce that the second byte will be between <code>00</code> and <code>0D</code>, or <code>80</code> and <code>8D</code></p>
 <p>Note that Oodle will still load version 3 and older files, which will start with <code>#0</code>, <code>#1</code>, <code>#2</code>, or <code>#3</code> and will  usually look like LZW or LZB.</p>
 <h2 id="zip-signature-speedrun">Zip Signature Speedrun</h2>
 <p>Compression archives almost always have a signature at the start of the file.

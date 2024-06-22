@@ -38,7 +38,7 @@ It comes in a lot of flavors and figuring out which one is used can be difficult
 
 To figure out if a file might be compressed with an Lz algorithm, you should look for the following:
 
-- The first byte is almost always `0F`, `1F`, `F0`, or `FF`.
+- The first byte is almost always `0F`, `1F`, `F0`, or `FF`
 - The following bytes are seemingly uncompressed data.
 - The first byte repeats itself frequently in the data, especially at the start of the file.
 
@@ -93,7 +93,7 @@ ZLib uses a DEFLATE block with a header, and ADLER32 as it's checksum algorithm.
 
 ### ZLib
 
-ZLib[^rfc1950] preprends a 2 byte header to the compressed block (usually deflate). This usually is `78 9C` or `78 DA`.
+ZLib[^rfc1950] preprends a 2 byte header to the compressed block (usually deflate). This usually is `78 9C` or `78 DA`
 
 The first byte is the compression method, and the second byte has some flags. The compression method is usually `8`, which is DEFLATE. 
 
@@ -180,7 +180,7 @@ struct zstd_header {
 ### ZDictionary
 
 ZStandard might use a dictionary[^zdict] to compress the data, and the dictionary is stored either as a separate file, or in the same file as the compressed data. In some cases it might be in the executable itself (very rare!)
-Documentation on ZDict is sparse, however we know that the magic value is `37 A4 30 EC`.
+Documentation on ZDict is sparse, however we know that the magic value is `37 A4 30 EC`
 
 The ZDict header has the following format:
 
@@ -211,7 +211,7 @@ struct oodle_block_header {
 ```
 
 Compression type will be between 0 and 13 as of Oodle Version 9 (oo2core_9), and the checksum used is a modified Jenkins algorithm. 
-From this we can deduce that the second byte will be between `00` and `0D`, or `80` and `8D`.
+From this we can deduce that the second byte will be between `00` and `0D`, or `80` and `8D`
 
 Note that Oodle will still load version 3 and older files, which will start with `#0`, `#1`, `#2`, or `#3` and will  usually look like LZW or LZB.
 
