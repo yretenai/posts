@@ -1,7 +1,8 @@
 ---
 title: some notes about gaming on linux
 short: this is mostly so i don't forget
-date: 2024-06-22 04:36 AM
+date: 2024-06-22 4:36 AM
+updated: 2024-06-22 5:17 AM
 ---
 
 I recently migrated to using Linux full time.
@@ -19,7 +20,7 @@ alternatively set the variable to an empty string in whatever launch manager you
 ## Enabling DX12 Ray Tracing
 
 If you have a ray tracing capable GPU (RTX 2000 or newer, RX 6800 or newer)
-you might be able to force ray-tracing to be enabled by using the following launch arguments:
+you might be able to tell Mesa and VKD3D that ray-tracing can be enabled by using the following launch arguments:
 
 `RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
 
@@ -27,7 +28,8 @@ If you have an older GPU you can try:
 
 `RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
 
-This assumes you have a relatively recent VKD3D and Mesa installation.
+This assumes you have a relatively recent VKD3D and Mesa installation,
+and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)
 
 ## Windows-only Third-Party Mod Tooling
 

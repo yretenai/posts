@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://chronovore.dev/posts/2024-06-22-0436A-linux-gaming-notes.html">
     <meta property="og:type" content="article">
     <meta property="og:author" content="Ada">
-    <meta property="article:published_time" content="2024-06-22T04:36:00">
+    <meta property="article:published_time" content="2024-06-22T05:17:00">
 </head>
 
 <body>
@@ -31,11 +31,11 @@
                 <br/>
                 <span>
                     last updated at
-                    <time datetime="2024-06-22T04:36:00">2024-06-22 04:36 AM</time>
+                    <time datetime="2024-06-22T05:17:00">2024-06-22 5:17 AM</time>
                 </span>
                 <span>
                     published at
-                    <time datetime="2024-06-22T04:36:00">2024-06-22 04:36 AM</time>
+                    <time datetime="2024-06-22T04:36:00">2024-06-22 4:36 AM</time>
                 </span>
                 <br/>
             </figure>
@@ -53,11 +53,12 @@ You need to not look far to find an ocean of reasons why Windows has been a bit 
 alternatively set the variable to an empty string in whatever launch manager you&rsquo;re using (Heroic, Lutris).</p>
 <h2 id="enabling-dx12-ray-tracing">Enabling DX12 Ray Tracing</h2>
 <p>If you have a ray tracing capable GPU (RTX 2000 or newer, RX 6800 or newer)
-you might be able to force ray-tracing to be enabled by using the following launch arguments:</p>
+you might be able to tell Mesa and VKD3D that ray-tracing can be enabled by using the following launch arguments:</p>
 <p><code>RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
 <p>If you have an older GPU you can try:</p>
 <p><code>RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
-<p>This assumes you have a relatively recent VKD3D and Mesa installation.</p>
+<p>This assumes you have a relatively recent VKD3D and Mesa installation,
+and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)</p>
 <h2 id="windows-only-third-party-mod-tooling">Windows-only Third-Party Mod Tooling</h2>
 <p>You can add the mod tools as a non-steam game, given it has a GUI.</p>
 <p>When you do, set the launch arguments to <code>STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%</code>.
