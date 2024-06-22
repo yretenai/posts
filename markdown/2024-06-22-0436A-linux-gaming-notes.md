@@ -25,11 +25,11 @@ Alternatively, set the variable to an empty string in whatever launch manager yo
 If you have a ray tracing capable GPU (RTX 2000 or newer, RX 6800 or newer)
 you might be able to tell Mesa and VKD3D that ray-tracing can be enabled by using the following launch arguments:
 
-`RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
+`env RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
 
 If you have an older GPU you can try:
 
-`RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
+`env RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%`
 
 This assumes you have a relatively recent VKD3D and Mesa installation,
 and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)
@@ -40,7 +40,7 @@ You can add the mod tools as a non-steam game, given it has a GUI.
 
 When you do, force it to use **the same compatability tools as the game** and set the launch arguments to:
 
-`STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`
+`env STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%`
 
 You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game *not* the non-steam app when installing.
 

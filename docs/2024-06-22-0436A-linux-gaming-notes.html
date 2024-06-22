@@ -55,15 +55,15 @@ You need to not look far to find an ocean of reasons why Windows has been a bit 
 <h2 id="enabling-dx12-ray-tracing">Enabling DX12 Ray Tracing</h2>
 <p>If you have a ray tracing capable GPU (RTX 2000 or newer, RX 6800 or newer)
 you might be able to tell Mesa and VKD3D that ray-tracing can be enabled by using the following launch arguments:</p>
-<p><code>RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
+<p><code>env RADV_PERFTEST=rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
 <p>If you have an older GPU you can try:</p>
-<p><code>RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
+<p><code>env RADV_PERFTEST=emulate_rt VKD3D_CONFIG=dxr VKD3D_FEATURE_LEVEL=12_2 %command%</code></p>
 <p>This assumes you have a relatively recent VKD3D and Mesa installation,
 and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)</p>
 <h2 id="windows-only-third-party-mod-tooling">Windows-only Third-Party Mod Tooling</h2>
 <p>You can add the mod tools as a non-steam game, given it has a GUI.</p>
 <p>When you do, force it to use <strong>the same compatability tools as the game</strong> and set the launch arguments to:</p>
-<p><code>STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%</code></p>
+<p><code>env STEAM_COMPAT_DATA_PATH="~/.steam/root/steamapps/compatdata/489830" %command%</code></p>
 <p>You may need to install more dependencies like .NET 4.8/6.0, etc via protontricks, select the game <em>not</em> the non-steam app when installing.</p>
 <p>Change <code>~/.steam/root/steamapps</code> to the SteamLibrary steamapps folder if installed in a steam library folder.</p>
 <p>Change 489830 to match the steam id of the mod tool the game is for, 489830 is Skyrim SE/AE.
