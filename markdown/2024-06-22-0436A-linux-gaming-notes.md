@@ -2,7 +2,7 @@
 title: some notes about gaming on linux
 short: this is mostly so i don't forget
 date: 2024-06-22 4:36 AM
-updated: 2024-06-22 5:24 AM
+updated: 2024-06-22 9:51 AM
 ---
 
 I recently migrated to using Linux full time.
