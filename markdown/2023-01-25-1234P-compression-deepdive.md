@@ -2,10 +2,12 @@
 title: compression algorithms
 short: a deep dive into compression algorithms and how to notice them in hex
 date: 2023-01-25 2:42 PM
-updated: 2023-07-11 7:36 PM
+updated: 2024-08-19 11:25 PM
 ---
 
 # Compression Algorithms
+
+*Update: 2024-08-19 - Added Tile Streaming info.*
 
 *Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.*
 
@@ -216,6 +218,30 @@ From this we can deduce that the second byte will be between `00` and `0D`, or `
 Note that Oodle will still load version 3 and older files, which will start with `#0`, `#1`, `#2`, or `#3` and will  usually look like LZW or LZB.
 
 [^oodle]: [http://www.radgametools.com/oodle.htm](http://www.radgametools.com/oodle.htm)
+
+## Tile Streaming (dstorage)
+
+Tile Streaming uses a system to decompress multiple blocks simultaneously[^dstorage].
+The format supports various compression formats, but at the moment only GDeflate[^gdeflate] (a variation of DEFLATE) is recognized.
+The header is easily tested, the first byte will be the compression type (`04` for GDeflate) followed by that byte XORed with 0xFF (`FB` for GDeflate.) Followed by the number of "tiles".
+
+Data compressed with GDeflate Tile Streaming will start with `04 FB`.
+
+This ends up being:
+
+```c
+struct tile_stream_header {
+    uint8_t compressor_id;
+    uint8_t magic;
+    uint16_t num_tiles;
+    uint32_t tile_size_idx : 2; // this is always 1
+    uint32_t last_tile_size: 18;
+    uint32_t reserved : 12;
+};
+```
+
+[^dstorage]: [https://github.com/microsoft/DirectStorage/tree/56489d25900d916a9cc450f5efe9e62b01789030/GDeflate/GDeflate](https://github.com/microsoft/DirectStorage/tree/56489d25900d916a9cc450f5efe9e62b01789030/GDeflate/GDeflate)
+[^gdeflate]: [https://github.com/NVIDIA/libdeflate](https://github.com/NVIDIA/libdeflate)
 
 ## Zip Signature Speedrun
 
