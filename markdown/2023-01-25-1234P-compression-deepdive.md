@@ -2,23 +2,25 @@
 title: compression algorithms
 short: a deep dive into compression algorithms and how to notice them in hex
 date: 2023-01-25 2:42 PM
-updated: 2024-08-19 11:25 PM
+updated: 2024-09-09 4:01 PM
 ---
 
 # Compression Algorithms
+
+*Update: 2024-09-09 - Added DENSITY info.*
 
 *Update: 2024-08-19 - Added Tile Streaming info.*
 
 *Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.*
 
-One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file. 
+One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file.
 This is an interesting question, and I hope that this post will help you understand how I notice compression algorithms in hex.
 
 I will not be going over the fundamentals of compression algorithms or go into detail about how they work.
 
 The forum posts[^eyes] and reference docs that have taught me how to do this are referenced where appropriate.
 
-I will explain some of the structure of how the compression algorithms are set up because I believe that understanding _what_ these values mean, 
+I will explain some of the structure of how the compression algorithms are set up because I believe that understanding _what_ these values mean,
 it will help you understand _why_ they are there and how to notice them when the configuration values are anything but the defaults.
 
 All magic values are written as byte sequences (i.e. big endian)
@@ -29,13 +31,13 @@ All magic values are written as byte sequences (i.e. big endian)
 
 ## The Basics
 
-The first thing you need to know is that compression algorithms are not magic. 
-In many cases compression algorithms have a sanity check (a "magic" number) that is used to verify and set up the decompressor. 
+The first thing you need to know is that compression algorithms are not magic.
+In many cases compression algorithms have a sanity check (a "magic" number) that is used to verify and set up the decompressor.
 In other cases parts of the data can be seen in the compressed data.
 
 ## The Dreaded Lempel-Ziv Algorithm (Lz*)
 
-The Lempel-Ziv algorithm is a compression algorithm that is used in many compression formats. 
+The Lempel-Ziv algorithm is a compression algorithm that is used in many compression formats.
 It comes in a lot of flavors and figuring out which one is used can be difficult.
 
 To figure out if a file might be compressed with an Lz algorithm, you should look for the following:
@@ -44,7 +46,7 @@ To figure out if a file might be compressed with an Lz algorithm, you should loo
 - The following bytes are seemingly uncompressed data.
 - The first byte repeats itself frequently in the data, especially at the start of the file.
 
-This is because LZ algorithms use a dictionary to store data that has been seen before, 
+This is because LZ algorithms use a dictionary to store data that has been seen before,
 and the first byte (the "block") is used to determine the length of the data to be copied from the dictionary.
 
 I strongly suggest using comscan[^comscan] with quickbms[^bms] to test what compression algorithm is used by a file when you encounter this and LZ4 (see below) does not work.
@@ -97,7 +99,7 @@ ZLib uses a DEFLATE block with a header, and ADLER32 as it's checksum algorithm.
 
 ZLib[^rfc1950] preprends a 2 byte header to the compressed block (usually deflate). This usually is `78 9C` or `78 DA`
 
-The first byte is the compression method, and the second byte has some flags. The compression method is usually `8`, which is DEFLATE. 
+The first byte is the compression method, and the second byte has some flags. The compression method is usually `8`, which is DEFLATE.
 
 ```c
 struct zlib_header {
@@ -109,7 +111,7 @@ struct zlib_header {
 }
 ```
 
-The `compression_info` is the log base 2 of the window size (the size of the dictionary used by the compressor), and the `checksum` a the checksum of the header. 
+The `compression_info` is the log base 2 of the window size (the size of the dictionary used by the compressor), and the `checksum` a the checksum of the header.
 The `dict` flag is set if a dictionary is used, and the `level` is the compression level used by the compressor.
 
 Knowing this, zlib header will always start with `78` if the compression method is DEFLATE.
@@ -212,7 +214,7 @@ struct oodle_block_header {
 }
 ```
 
-Compression type will be between 0 and 13 as of Oodle Version 9 (oo2core_9), and the checksum used is a modified Jenkins algorithm. 
+Compression type will be between 0 and 13 as of Oodle Version 9 (oo2core_9), and the checksum used is a modified Jenkins algorithm.
 From this we can deduce that the second byte will be between `00` and `0D`, or `80` and `8D`
 
 Note that Oodle will still load version 3 and older files, which will start with `#0`, `#1`, `#2`, or `#3` and will  usually look like LZW or LZB.
@@ -242,6 +244,29 @@ struct tile_stream_header {
 
 [^dstorage]: [https://github.com/microsoft/DirectStorage/tree/56489d25900d916a9cc450f5efe9e62b01789030/GDeflate/GDeflate](https://github.com/microsoft/DirectStorage/tree/56489d25900d916a9cc450f5efe9e62b01789030/GDeflate/GDeflate)
 [^gdeflate]: [https://github.com/NVIDIA/libdeflate](https://github.com/NVIDIA/libdeflate)
+
+## DENSITY
+
+Density[^density] is a compression algorithm that claims[^density-benchmarks] 2x decompression speed compared to LZ4.
+
+It has a very predictable header that is easy to spot.
+
+```c
+struct density_header {
+    uint8_t version_major;
+    uint8_t version_minor;
+    uint8_t version_revision;
+    uint8_t compression_type;
+    uint32_t reserved;
+}
+```
+
+Density has 18 releases, of which only 3 are not marked as pre released (0.14.0, 0.14.1, 0.14.2). It has 3 compression types (1, 2, 3.)
+
+We can reduce this to a set byte sequences `00 0E 02 01 00 00 00 00` with 02 being the revision version, and 01 being the compression type.
+
+[^density]: [https://github.com/g1mv/density](https://github.com/g1mv/density)
+[^density-benchmarks]: [https://github.com/g1mv/density?tab=readme-ov-file#benchmarks](https://github.com/g1mv/density?tab=readme-ov-file#benchmarks)
 
 ## Zip Signature Speedrun
 
