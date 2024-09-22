@@ -46,9 +46,6 @@
         </nav>
         <article>
 <h1 id="compression-algorithms">Compression Algorithms</h1>
-<p><em>Update: 2024-09-09 - Added DENSITY info.</em></p>
-<p><em>Update: 2024-08-19 - Added Tile Streaming info.</em></p>
-<p><em>Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.</em></p>
 <p>One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file.
 This is an interesting question, and I hope that this post will help you understand how I notice compression algorithms in hex.</p>
 <p>I will not be going over the fundamentals of compression algorithms or go into detail about how they work.</p>
@@ -79,6 +76,7 @@ it will help you understand <em>why</em> they are there and how to notice them w
 <li><a href="#tile-streaming-dstorage">Tile Streaming (dstorage)</a></li>
 <li><a href="#density">DENSITY</a></li>
 <li><a href="#zip-signature-speedrun">Zip Signature Speedrun</a></li>
+<li><a href="#changelog">Changelog</a></li>
 </ul>
 </li>
 </ul>
@@ -241,6 +239,10 @@ I&rsquo;m adding them here for completeness.</p>
 <li>Xz Magic: <code>FD 37 7A 58 5A 00</code> (7zXZ)</li>
 <li>Tar Magic: <code>75 73 74 61 72</code> (ustar) - usually found at the end of filelist</li>
 </ul>
+<h2 id="changelog">Changelog</h2>
+<p><em>Update: 2024-09-09 - Added DENSITY info.</em></p>
+<p><em>Update: 2024-08-19 - Added Tile Streaming info.</em></p>
+<p><em>Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.</em></p>
 <div class="footnote">
 <hr />
 <ol>

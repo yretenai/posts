@@ -7,12 +7,6 @@ updated: 2024-09-09 4:01 PM
 
 # Compression Algorithms
 
-*Update: 2024-09-09 - Added DENSITY info.*
-
-*Update: 2024-08-19 - Added Tile Streaming info.*
-
-*Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.*
-
 One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file.
 This is an interesting question, and I hope that this post will help you understand how I notice compression algorithms in hex.
 
@@ -280,3 +274,11 @@ I'm adding them here for completeness.
 - WIM Magic: `4D 53 57 49 4D 00 00 00` (MSWIM)
 - Xz Magic: `FD 37 7A 58 5A 00` (7zXZ)
 - Tar Magic: `75 73 74 61 72` (ustar) - usually found at the end of filelist
+
+## Changelog
+
+*Update: 2024-09-09 - Added DENSITY info.*
+
+*Update: 2024-08-19 - Added Tile Streaming info.*
+
+*Update: 2023-07-11 - zenhax is offline, replaced links with archive.org links.*
