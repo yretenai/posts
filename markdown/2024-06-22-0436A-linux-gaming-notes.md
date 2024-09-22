@@ -2,13 +2,15 @@
 title: some notes about gaming on linux
 short: this is mostly so i don't forget
 date: 2024-06-22 4:36 AM
-updated: 2024-06-22 9:51 AM
+updated: 2024-09-22 8:16 AM
 ---
 
 I recently migrated to using Linux full time.
 You need to not look far to find an ocean of reasons why Windows has been a bit miserable.
 
 This post mainly serves as a logbook for fixes and workarounds for making games (and some applications) work on Linux.
+
+[TOC]
 
 ## EAC "Failed to Intialize Dependencies" error
 
@@ -33,6 +35,30 @@ If you have an older GPU you can try:
 
 This assumes you have a relatively recent VKD3D and Mesa installation,
 and the game has to support ray tracing in any capacity (i.e. World of Warcraft, Ratchet and Clank: Rift Apart)
+
+## Games not capturing mouse cursor
+
+Some games don't play nice with mouse capture, an easy way to solve this is by changing the launch arguments to:
+
+`gamescope --force-grab-cursor -f %command%`
+
+You may swap -f with -b for borderless windowed instead of fullscreen.
+
+## Gamescope exiting early due to short-lived launcher processes
+
+Some games launch via third party launchers that cause gamescope to exit before the wine device.
+
+This may be solved by forcing the SDL backend.
+
+`gamescope --backend sdl %command%`
+
+## Gamescope resolution being fixed to the first window size under SDL
+
+Gamescope under SDL has a hard time adjusting to resolution changes (i.e. if you're using it for launcher processes.), to solve this you must force the window to be fullscreen.
+
+`gamescope -w YOUR_RESOLUTION_HERE -h YOUR_RESOLUTION_HERE -r YOUR_REFRESH_RATE_HERE --backend sdl --force-windows-fullscreen -f %command%`
+
+(Special thanks to [Hollyrious](https://twitch.tv/hollyrious) for helping me diagnose this!)
 
 ## Windows-only Third-Party Mod Tooling
 
@@ -60,3 +86,7 @@ I have managed to reduce the frequency of crashes by limiting how many resources
 `env DXVK_CONFIG="dxvk.numCompilerThreads=1" WINE_CPU_TOPOLOGY="4:0,2,4,6" %command%`
 
 If there is too much lag, you might want to redefine the CPU topology, i.e. `WINE_CPU_TOPOLOGY="8:0,1,2,3,4,5,6,7"`
+
+## Changelog
+
+*Update: 2024-09-22 - Added gamescope-related workarounds.*
