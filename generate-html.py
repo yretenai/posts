@@ -5,9 +5,9 @@ from codecs import open as cope
 from datetime import datetime, timezone
 from os.path import basename, splitext
 from json import dumps as json_serialize
-from lxml.etree import tostring as xml_serialize
-from lxml.builder import E as elem
-from lxml.builder import ElementMaker
+from lxml.etree import CDATA, tostring as xml_serialize
+from lxml import etree
+from lxml.builder import ElementMaker, E as elem
 from email.utils import format_datetime
 
 BLOG_NAME = "ada's blog"
@@ -28,6 +28,7 @@ atom_feed = [
 ]
 
 ATOM_NS = ElementMaker(namespace="http://www.w3.org/2005/Atom", nsmap={'atom': "http://www.w3.org/2005/Atom"})
+CONTENT_NS = ElementMaker(namespace="http://purl.org/rss/1.0/modules/content/", nsmap={'content': "http://purl.org/rss/1.0/modules/content/"})
 
 rss_feed = [
     elem.title(BLOG_NAME),
@@ -64,7 +65,8 @@ with cope('docs/index.html', 'w', 'utf8') as index:
     for md_file in reversed(sorted(glob('markdown/*.md'))):
         with cope(md_file, 'r', 'utf8') as md:
             markdown = Markdown(extensions=['meta', 'tables', 'smarty', 'fenced_code', 'codehilite', 'footnotes', 'toc', 'admonition'])
-            text = markdown.convert(md.read().strip())
+            md_data = md.read().strip()
+            text = markdown.convert(md_data)
             meta = markdown.Meta
             name = splitext(basename(md_file))[0]
 
@@ -84,6 +86,8 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                 index_lines += f'<li><a href="{name}.html">{meta['title'][0]}</a></li>\n'
                 folder = ''
                 rel = ''
+                md_data_nohead = md_data.split('---', 2)[-1].strip()
+                feed_data = CDATA(md_data_nohead)
 
                 atom_feed.append(
                     elem.entry(
@@ -92,7 +96,8 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                         elem.updated(upd_date_iso),
                         elem.published(pub_date_iso),
                         elem.summary(meta['short'][0]),
-                        elem.id(BLOG_POST_ID + name)
+                        elem.id(BLOG_POST_ID + name),
+                        elem.content(feed_data, type="md")
                     )
                 )
 
@@ -103,7 +108,8 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                         elem.pubDate(format_datetime(pub_date_t)),
                         elem.description(meta['short'][0]),
                         elem.author(BLOG_WHOAMI),
-                        elem.guid(BLOG_POST_ID + name)
+                        elem.guid(BLOG_POST_ID + name),
+                        CONTENT_NS.encoded(feed_data)
                     )
                 )
 
@@ -114,6 +120,7 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                     "summary": meta['short'][0],
                     "date_published": pub_date_iso,
                     "date_modified": upd_date_iso,
+                    "content_text": md_data_nohead,
                 })
 
             print(name)
@@ -125,7 +132,9 @@ atom = elem.feed(*atom_feed, xmlns="http://www.w3.org/2005/Atom")
 with cope('docs/feed.atom', 'wb') as atom_file:
     atom_file.write(xml_serialize(atom, pretty_print=True, xml_declaration=True, encoding='utf-8'))
 
-rss = elem.rss(elem.channel(*rss_feed), version="2.0")
+rss = etree.Element("rss", nsmap={'atom': "http://www.w3.org/2005/Atom", 'content': "http://purl.org/rss/1.0/modules/content/"})
+rss.set("version", "2.0")
+rss.append(elem.channel(*rss_feed))
 with cope('docs/feed.rss', 'wb') as rss_file:
     rss_file.write(xml_serialize(rss, pretty_print=True, xml_declaration=True, encoding='utf-8'))
 
