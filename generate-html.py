@@ -28,7 +28,6 @@ atom_feed = [
 ]
 
 ATOM_NS = ElementMaker(namespace="http://www.w3.org/2005/Atom", nsmap={'atom': "http://www.w3.org/2005/Atom"})
-CONTENT_NS = ElementMaker(namespace="http://purl.org/rss/1.0/modules/content/", nsmap={'content': "http://purl.org/rss/1.0/modules/content/"})
 
 rss_feed = [
     elem.title(BLOG_NAME),
@@ -109,7 +108,7 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                         elem.description(meta['short'][0]),
                         elem.author(BLOG_WHOAMI),
                         elem.guid(BLOG_POST_ID + name),
-                        CONTENT_NS.encoded(feed_data)
+                        ATOM_NS.content(feed_data, type="md")
                     )
                 )
 
@@ -132,7 +131,7 @@ atom = elem.feed(*atom_feed, xmlns="http://www.w3.org/2005/Atom")
 with cope('docs/feed.atom', 'wb') as atom_file:
     atom_file.write(xml_serialize(atom, pretty_print=True, xml_declaration=True, encoding='utf-8'))
 
-rss = etree.Element("rss", nsmap={'atom': "http://www.w3.org/2005/Atom", 'content': "http://purl.org/rss/1.0/modules/content/"})
+rss = etree.Element("rss", nsmap={'atom': "http://www.w3.org/2005/Atom"})
 rss.set("version", "2.0")
 rss.append(elem.channel(*rss_feed))
 with cope('docs/feed.rss', 'wb') as rss_file:
