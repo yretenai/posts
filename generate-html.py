@@ -121,7 +121,7 @@ atom = elem.feed(*atom_feed, xmlns="http://www.w3.org/2005/Atom")
 with cope('docs/feed.atom', 'wb') as atom_file:
     atom_file.write(xml_serialize(atom, pretty_print=True, xml_declaration=True, encoding='utf8'))
 
-rss = elem.rss(elem.channel(*rss_feed, version="2.0"))
+rss = elem.rss(elem.channel(*rss_feed), version="2.0")
 with cope('docs/feed.rss', 'wb') as rss_file:
     rss_file.write(xml_serialize(rss, pretty_print=True, xml_declaration=True, encoding='utf8'))
 
