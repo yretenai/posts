@@ -2,35 +2,39 @@ from markdown import Markdown
 from markdown.extensions.codehilite import CodeHiliteExtension
 from glob import glob
 from codecs import open as cope
-from datetime import datetime
+from datetime import datetime, timezone
 from os.path import basename, splitext
 from json import dumps as json_serialize
 from lxml.etree import tostring as xml_serialize
 from lxml.builder import E as elem
+from lxml.builder import ElementMaker
 from email.utils import format_datetime
 
 BLOG_NAME = "ada's blog"
 BLOG_ROOT = "https://chronovore.dev/posts"
 BLOG_WHOAMI = "Ada"
 BLOG_DESCRIPTION = "just a collection of thoughts~"
-BLOG_ID = "feed:chronovore:root"
-BLOG_POST_ID = "feed:chronovore:"
+BLOG_ID = "tag:chronovore.dev,posts:root"
+BLOG_POST_ID = "tag:chronovore.dev,posts:"
 
 atom_feed = [
     elem.title(BLOG_NAME),
     elem.link(href=BLOG_ROOT),
-    elem.updated(datetime.now().isoformat()),
+    elem.link(rel="self", href=f'{BLOG_ROOT}/feed.atom'),
+    elem.updated(datetime.now(timezone.utc).isoformat()),
     elem.author(elem.name(BLOG_WHOAMI)),
     elem.generator("pumpkin"),
-    elem.language("en"),
     elem.id(BLOG_ID)
 ]
 
+ATOM_NS = ElementMaker(namespace="http://www.w3.org/2005/Atom", nsmap={'atom': "http://www.w3.org/2005/Atom"})
+
 rss_feed = [
     elem.title(BLOG_NAME),
-    elem.link(href=BLOG_ROOT),
+    elem.link(BLOG_ROOT),
+    ATOM_NS.link(rel="self", href=f'{BLOG_ROOT}/feed.rss'),
     elem.description(BLOG_DESCRIPTION),
-    elem.lastBuildDate(format_datetime(datetime.now())),
+    elem.lastBuildDate(format_datetime(datetime.now(timezone.utc))),
     elem.generator("pumpkin"),
     elem.language("en")
 ]
@@ -69,8 +73,8 @@ with cope('docs/index.html', 'w', 'utf8') as index:
 
             date = meta['date']
             upd_date = meta['updated'] if 'updated' in meta else date
-            pub_date_t = datetime.strptime(date[0], '%Y-%m-%d %I:%M %p')
-            upd_date_t = datetime.strptime(upd_date[0], '%Y-%m-%d %I:%M %p')
+            pub_date_t = datetime.strptime(date[0], '%Y-%m-%d %I:%M %p').astimezone(timezone.utc)
+            upd_date_t = datetime.strptime(upd_date[0], '%Y-%m-%d %I:%M %p').astimezone(timezone.utc)
             pub_date_iso = pub_date_t.isoformat()
             upd_date_iso = upd_date_t.isoformat()
 
@@ -95,7 +99,7 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                 rss_feed.append(
                     elem.item(
                         elem.title(meta['title'][0]),
-                        elem.link(href=f"{BLOG_ROOT}/{name}.html"),
+                        elem.link(f"{BLOG_ROOT}/{name}.html"),
                         elem.pubDate(format_datetime(pub_date_t)),
                         elem.description(meta['short'][0]),
                         elem.author(BLOG_WHOAMI),
@@ -119,11 +123,11 @@ with cope('docs/index.html', 'w', 'utf8') as index:
 
 atom = elem.feed(*atom_feed, xmlns="http://www.w3.org/2005/Atom")
 with cope('docs/feed.atom', 'wb') as atom_file:
-    atom_file.write(xml_serialize(atom, pretty_print=True, xml_declaration=True, encoding='utf8'))
+    atom_file.write(xml_serialize(atom, pretty_print=True, xml_declaration=True, encoding='utf-8'))
 
 rss = elem.rss(elem.channel(*rss_feed), version="2.0")
 with cope('docs/feed.rss', 'wb') as rss_file:
-    rss_file.write(xml_serialize(rss, pretty_print=True, xml_declaration=True, encoding='utf8'))
+    rss_file.write(xml_serialize(rss, pretty_print=True, xml_declaration=True, encoding='utf-8'))
 
 with cope('docs/feed.json', 'w') as json_file:
     json_file.write(json_serialize(json_root, indent=2)+'\n')
