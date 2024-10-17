@@ -96,7 +96,7 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                         elem.published(pub_date_iso),
                         elem.summary(meta['short'][0]),
                         elem.id(BLOG_POST_ID + name),
-                        elem.content(feed_data, type="md")
+                        elem.content(feed_data, type="text/markdown")
                     )
                 )
 
@@ -108,7 +108,7 @@ with cope('docs/index.html', 'w', 'utf8') as index:
                         elem.description(meta['short'][0]),
                         elem.author(BLOG_WHOAMI),
                         elem.guid(BLOG_POST_ID + name),
-                        ATOM_NS.content(feed_data, type="md")
+                        ATOM_NS.content(feed_data, type="text/markdown")
                     )
                 )
 

@@ -5,7 +5,7 @@
     <link>https://chronovore.dev/posts</link>
     <atom:link rel="self" href="https://chronovore.dev/posts/feed.rss"/>
     <description>just a collection of thoughts~</description>
-    <lastBuildDate>Thu, 17 Oct 2024 13:01:31 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Oct 2024 13:07:53 +0000</lastBuildDate>
     <generator>pumpkin</generator>
     <language>en</language>
     <item>
@@ -15,7 +15,7 @@
       <description>this is mostly so i don't forget</description>
       <author>Ada</author>
       <guid>tag:chronovore.dev,posts:2024-06-22-0436A-linux-gaming-notes</guid>
-      <atom:content type="md"><![CDATA[I recently migrated to using Linux full time.
+      <atom:content type="text/markdown"><![CDATA[I recently migrated to using Linux full time.
 You need to not look far to find an ocean of reasons why Windows has been a bit miserable.
 
 This post mainly serves as a logbook for fixes and workarounds for making games (and some applications) work on Linux.
@@ -108,7 +108,7 @@ If there is too much lag, you might want to redefine the CPU topology, i.e. `WIN
       <description>this is just me rambling about a csharp feature</description>
       <author>Ada</author>
       <guid>tag:chronovore.dev,posts:2024-03-01-0720P-of-records-and-spans</guid>
-      <atom:content type="md"><![CDATA[This post is mostly just me speaking fondly of Spans and Records
+      <atom:content type="text/markdown"><![CDATA[This post is mostly just me speaking fondly of Spans and Records
 with no real technical information besides how cool they are and their use cases.
 
 This is not a guide, or tutorial, or a technical writeup.
@@ -336,7 +336,7 @@ Thanks to [scarletquasar](https://github.com/scarletquasar) for some corrections
       <description>it's not just fancy json.</description>
       <author>Ada</author>
       <guid>tag:chronovore.dev,posts:2023-07-29-0925A-activity-jsonld-rot</guid>
-      <atom:content type="md"><![CDATA[# as always, context is important
+      <atom:content type="text/markdown"><![CDATA[# as always, context is important
 
 ActivityStreams is a subset of JSON-LD, specifically the compacted form.
 
@@ -478,7 +478,7 @@ Support for them in other platforms might not ever exist, though.
       <description>a deep dive into compression algorithms and how to notice them in hex</description>
       <author>Ada</author>
       <guid>tag:chronovore.dev,posts:2023-01-25-1234P-compression-deepdive</guid>
-      <atom:content type="md"><![CDATA[# Compression Algorithms
+      <atom:content type="text/markdown"><![CDATA[# Compression Algorithms
 
 One of the things that my programmer friends often ask me about is how I can tell what kind of compression algorithm is used by a file.
 This is an interesting question, and I hope that this post will help you understand how I notice compression algorithms in hex.
