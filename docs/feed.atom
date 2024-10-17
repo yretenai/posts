@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ada's blog</title>
+  <link href="https://chronovore.dev/posts"/>
+  <updated>2024-10-17T13:21:22.549935</updated>
+  <author>
+    <name>Ada</name>
+  </author>
+  <generator>pumpkin</generator>
+  <language>en</language>
+  <id>feed:chronovore:root</id>
+  <entry>
+    <title>some notes about gaming on linux</title>
+    <link href="https://chronovore.dev/posts/2024-06-22-0436A-linux-gaming-notes.html"/>
+    <updated>2024-09-22T08:16:00</updated>
+    <published>2024-06-22T04:36:00</published>
+    <summary>this is mostly so i don't forget</summary>
+    <id>feed:chronovore:2024-06-22-0436A-linux-gaming-notes</id>
+  </entry>
+  <entry>
+    <title>of records and spans</title>
+    <link href="https://chronovore.dev/posts/2024-03-01-0720P-of-records-and-spans.html"/>
+    <updated>2024-03-01T19:20:00</updated>
+    <published>2024-03-01T19:20:00</published>
+    <summary>this is just me rambling about a csharp feature</summary>
+    <id>feed:chronovore:2024-03-01-0720P-of-records-and-spans</id>
+  </entry>
+  <entry>
+    <title>json-ld is misused</title>
+    <link href="https://chronovore.dev/posts/2023-07-29-0925A-activity-jsonld-rot.html"/>
+    <updated>2023-07-28T09:25:00</updated>
+    <published>2023-07-28T09:25:00</published>
+    <summary>it's not just fancy json.</summary>
+    <id>feed:chronovore:2023-07-29-0925A-activity-jsonld-rot</id>
+  </entry>
+  <entry>
+    <title>compression algorithms</title>
+    <link href="https://chronovore.dev/posts/2023-01-25-1234P-compression-deepdive.html"/>
+    <updated>2024-09-09T16:01:00</updated>
+    <published>2023-01-25T14:42:00</published>
+    <summary>a deep dive into compression algorithms and how to notice them in hex</summary>
+    <id>feed:chronovore:2023-01-25-1234P-compression-deepdive</id>
+  </entry>
+</feed>

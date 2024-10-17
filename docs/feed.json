@@ -1,0 +1,48 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "ada's blog",
+  "description": "just a collection of thoughts~",
+  "home_page_url": "https://chronovore.dev/posts",
+  "feed_url": "https://chronovore.dev/posts/feed.json",
+  "authors": [
+    {
+      "name": "Ada"
+    }
+  ],
+  "generator": "pumpkin",
+  "language": "en",
+  "items": [
+    {
+      "title": "some notes about gaming on linux",
+      "url": "https://chronovore.dev/posts/2024-06-22-0436A-linux-gaming-notes.html",
+      "id": "feed:chronovore:2024-06-22-0436A-linux-gaming-notes",
+      "summary": "this is mostly so i don't forget",
+      "date_published": "2024-06-22T04:36:00",
+      "date_modified": "2024-09-22T08:16:00"
+    },
+    {
+      "title": "of records and spans",
+      "url": "https://chronovore.dev/posts/2024-03-01-0720P-of-records-and-spans.html",
+      "id": "feed:chronovore:2024-03-01-0720P-of-records-and-spans",
+      "summary": "this is just me rambling about a csharp feature",
+      "date_published": "2024-03-01T19:20:00",
+      "date_modified": "2024-03-01T19:20:00"
+    },
+    {
+      "title": "json-ld is misused",
+      "url": "https://chronovore.dev/posts/2023-07-29-0925A-activity-jsonld-rot.html",
+      "id": "feed:chronovore:2023-07-29-0925A-activity-jsonld-rot",
+      "summary": "it's not just fancy json.",
+      "date_published": "2023-07-28T09:25:00",
+      "date_modified": "2023-07-28T09:25:00"
+    },
+    {
+      "title": "compression algorithms",
+      "url": "https://chronovore.dev/posts/2023-01-25-1234P-compression-deepdive.html",
+      "id": "feed:chronovore:2023-01-25-1234P-compression-deepdive",
+      "summary": "a deep dive into compression algorithms and how to notice them in hex",
+      "date_published": "2023-01-25T14:42:00",
+      "date_modified": "2024-09-09T16:01:00"
+    }
+  ]
+}

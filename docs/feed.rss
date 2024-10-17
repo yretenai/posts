@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf8'?>
+<rss>
+  <channel version="2.0">
+    <title>ada's blog</title>
+    <link href="https://chronovore.dev/posts"/>
+    <description>just a collection of thoughts~</description>
+    <lastBuildDate>Thu, 17 Oct 2024 13:21:22 -0000</lastBuildDate>
+    <generator>pumpkin</generator>
+    <language>en</language>
+    <item>
+      <title>some notes about gaming on linux</title>
+      <link href="https://chronovore.dev/posts/2024-06-22-0436A-linux-gaming-notes.html"/>
+      <pubDate>Sat, 22 Jun 2024 04:36:00 -0000</pubDate>
+      <description>this is mostly so i don't forget</description>
+      <author>Ada</author>
+      <guid>feed:chronovore:2024-06-22-0436A-linux-gaming-notes</guid>
+    </item>
+    <item>
+      <title>of records and spans</title>
+      <link href="https://chronovore.dev/posts/2024-03-01-0720P-of-records-and-spans.html"/>
+      <pubDate>Fri, 01 Mar 2024 19:20:00 -0000</pubDate>
+      <description>this is just me rambling about a csharp feature</description>
+      <author>Ada</author>
+      <guid>feed:chronovore:2024-03-01-0720P-of-records-and-spans</guid>
+    </item>
+    <item>
+      <title>json-ld is misused</title>
+      <link href="https://chronovore.dev/posts/2023-07-29-0925A-activity-jsonld-rot.html"/>
+      <pubDate>Fri, 28 Jul 2023 09:25:00 -0000</pubDate>
+      <description>it's not just fancy json.</description>
+      <author>Ada</author>
+      <guid>feed:chronovore:2023-07-29-0925A-activity-jsonld-rot</guid>
+    </item>
+    <item>
+      <title>compression algorithms</title>
+      <link href="https://chronovore.dev/posts/2023-01-25-1234P-compression-deepdive.html"/>
+      <pubDate>Wed, 25 Jan 2023 14:42:00 -0000</pubDate>
+      <description>a deep dive into compression algorithms and how to notice them in hex</description>
+      <author>Ada</author>
+      <guid>feed:chronovore:2023-01-25-1234P-compression-deepdive</guid>
+    </item>
+  </channel>
+</rss>
