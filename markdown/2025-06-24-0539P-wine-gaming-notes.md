@@ -2,7 +2,7 @@
 title: some notes about gaming via wine
 short: it has become quite a bit, huh?
 date: 2024-06-22 4:36 AM
-updated: 2026-08-08 7:15 AM
+updated: 2026-09-11 2:23 PM
 ---
 <!--
 SPDX-FileCopyrightText: 2026 Neptuwunium
@@ -333,6 +333,32 @@ FSR4_UPGRADE=0 PROTON_FSR4_UPGRADE=0 PROTON_FSR4_RDNA3_UPGRADE=0 %command%
 
 ([source](https://www.reddit.com/r/linux_gaming/comments/1v69w73/how_can_i_downgrade_fsr4_to_fsr3_on_newest_proton/))
 
+## SteamRT Silent Corruption
+
+If Steam Crashes (or the more likely case, a catastrophic power failure causes steam to silently corrupt itself), you will likely get an error state like:
+
+```
+ReexecSteamLinux: re-launching steam in SteamRT runtime
+pressure-vessel-wrap: E: This program should not be run in the Steam Runtime. Use pressure-vessel-unruntime instead.
+ReexecSteamLinux: exiting
+```
+
+or
+
+```
+steam.sh: internal error: .local/share/Steam/ubuntu12_32/steam-runtime/setup.sh is missing, this runtime is invalid or corrupted
+```
+
+This can be solved by removing the steam runtime and letting steam download it again:
+
+```sh
+pkill -9 steam
+cd ~/.steam/steam
+rm -rfv ubuntu12_32 ubuntu12_64
+```
+
+then launching steam as normal.
+
 ## Game-Specific Fixes
 
 ### Monster Hunter Wilds
@@ -583,6 +609,7 @@ to the launch arguments. `-dx11` or d3d11 or `-vulkan` for vulkan.
 
 ## Changelog
 
+- *Update: 2026-09-11 - Add SteamRT Corruption Workaround*
 - *Update: 2026-08-08 - Update FORSPOKEN FG*
 - *Update: 2026-07-27 - Disable FSR4 on FSR3*
 - *Update: 2026-07-27 - Unreal Tweaks*
